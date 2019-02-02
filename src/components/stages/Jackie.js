@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import Typed from "typed.js";
-import StageContainer from './StageContainer';
-import CaptchaGrid from "./CaptchaGrid";
+import Typed from "../../../node_modules/typed.js/lib/typed";
+import StageContainer from '../StageContainer';
+import CaptchaGrid from "../CaptchaGrid";
 
 export default class Jackie extends Component {
   constructor(props) {

@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import Welcome from './Welcome';
-import Primer from './Primer'
-import Jackie from "./Jackie";
+import Welcome from './stages/Welcome';
+import Primer from './stages/Primer'
+import Jackie from "./stages/Jackie";
+import DoYouWipe from "./stages/DoYouWipe";
 
 export default class Pipeline extends Component {
   constructor(props) {
@@ -58,7 +59,7 @@ export default class Pipeline extends Component {
       ];
     const jackieStageComponent = <Jackie
       typedOptions={this.typedOptions}
-      onStageComplete={this.onJackieStageComplete}
+      onStageComplete={this.loadDoYouWipeStage}
       firstImage={captchaImage1}
       secondImage={captchaImage2}
       correctIndices={correctIndices}
@@ -68,7 +69,15 @@ export default class Pipeline extends Component {
     });
   };
 
-  onJackieStageComplete = () => {
+  loadDoYouWipeStage = () => {
+    this.typedOptions.strings = ["Do you wipe?"];
+
+    const wipeStageComponent = <DoYouWipe
+      typedOptions={this.typedOptions}
+      />
+  };
+
+  loadShawnStage = () => {
 
   };
 

@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import Typed from "typed.js";
+import Typed from "../../../node_modules/typed.js/lib/typed";
 import styled from 'styled-components';
-import StageContainer from './StageContainer';
-import ButtonsContainer from './ButtonsContainer';
-import Button from './Button';
+import StageContainer from '../StageContainer';
+import ButtonsContainer from '../ButtonsContainer';
+import Button from '../Button';
 
 const StyledReadyButton = styled(Button)`
   border-color: #59ff48;
