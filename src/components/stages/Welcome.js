@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
-import Typed from "../../../node_modules/typed.js/lib/typed";
+import React from 'react';
 import styled from 'styled-components';
 import StageContainer from '../StageContainer';
 import ButtonsContainer from '../ButtonsContainer';
 import Button from "../Button";
+import StageComponent from "./StageComponent";
 
 const YesButton = styled(Button)`
   border-color: #59ff48;
@@ -15,29 +15,7 @@ const OfCourseButton = styled(Button)`
   color: #ffbe25;
 `;
 
-export default class Welcome extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isTyping: true,
-      isStageVisible: true
-    };
-  }
-
-  componentDidMount() {
-    this.props.typedOptions.onComplete = () => {
-      this.setState({
-        isTyping: false
-      })
-    };
-    this.typed = new Typed(this.textElement, this.props.typedOptions);
-    this.typed.start();
-  }
-
-  componentWillUnmount() {
-    this.typed.destroy();
-  }
-
+export default class Welcome extends StageComponent {
   onButtonClick = () => {
     this.setState({
       isStageVisible: false

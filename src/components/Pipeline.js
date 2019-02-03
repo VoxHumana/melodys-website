@@ -3,28 +3,35 @@ import Welcome from './stages/Welcome';
 import Primer from './stages/Primer'
 import Jackie from "./stages/Jackie";
 import DoYouWipe from "./stages/DoYouWipe";
+import Shawn from "./stages/Shawn";
 
 export default class Pipeline extends Component {
   constructor(props) {
     super(props);
-    const welcomeStageStrings = ["", "G'day Melody!", "Let's put some shrimp on the barbie!", "But first,^1200hmmm^500.^300.^300.", "Are you^300 <strong><i>really</i></strong>^300 Melody?"];
+    this.state = {
+      currentStage: <div/>
+    };
     this.typedOptions = {
-      strings: welcomeStageStrings,
       typeSpeed: 60, //TODO: Make this a configurable value
       backSpeed: 60, //TODO: Make this a configurable value
       backDelay: 1500
     };
+    setTimeout(this.loadShawnStage, 1000);
+  }
+
+  loadWelcomeStage = () => {
+    this.typedOptions.strings = ["", "G'day Melody!", "Let's put some shrimp on the barbie!", "But first,^1200hmmm^500.^300.^300.", "Are you^300 <strong><i>really</i></strong>^300 Melody?"];
     const welcomeStageComponent = <Welcome
       typedOptions={this.typedOptions}
       onStageComplete={this.loadPrimerStage}
     />;
-    this.state = {
-      currentStage: welcomeStageComponent,
-    };
-  }
+    this.setState({
+      currentStage: welcomeStageComponent
+    })
+  };
 
   loadPrimerStage = () => {
-    this.typedOptions.strings = ["", "Alright", "Let's try a little quiz", "Answer the questions correctly to prove that you're <strong><i>really</i></strong> Melody", "Ready?"];
+    this.typedOptions.strings = ["", "Alright", "Let's try a little quiz", "Answer the questions to prove that you're <strong><i>really</i></strong> Melody", "Ready?"];
     const primerStageComponent = <Primer
       typedOptions={this.typedOptions}
       onStageComplete={this.loadJackieStage}
@@ -35,7 +42,7 @@ export default class Pipeline extends Component {
   };
 
   loadJackieStage = () => {
-    this.typedOptions.strings = ["Select all squares with Jackie"];
+    this.typedOptions.strings = ["", "Question one", "Select all squares with Jackie"];
     let captchaImage1 = ["/img/cap1/001.png", "/img/cap1/002.png", "/img/cap1/003.png", "/img/cap1/004.png",
       "/img/cap1/005.png", "/img/cap1/006.png", "/img/cap1/007.png", "/img/cap1/008.png",
       "/img/cap1/009.png", "/img/cap1/010.png", "/img/cap1/011.png", "/img/cap1/012.png",
@@ -70,14 +77,27 @@ export default class Pipeline extends Component {
   };
 
   loadDoYouWipeStage = () => {
-    this.typedOptions.strings = ["Do you wipe?"];
-
-    const wipeStageComponent = <DoYouWipe
-      typedOptions={this.typedOptions}
-      />
+    this.typedOptions.strings = ["", "Question two", "Do you wipe?"];
+    const wipeStageComponent =
+      <DoYouWipe
+        typedOptions={this.typedOptions}
+        onStageComplete={this.loadShawnStage}
+      />;
+    this.setState({
+      currentStage: wipeStageComponent
+    });
   };
 
   loadShawnStage = () => {
+    this.typedOptions.strings = ["", "Question three", "Who is this angelic singer?"];
+    const shawnStageComponent =
+      <Shawn typedOptions={this.typedOptions} onStageComplete={this.loadDelphineStage}/>;
+    this.setState({
+      currentStage: shawnStageComponent
+    });
+  };
+
+  loadDelphineStage = () => {
 
   };
 

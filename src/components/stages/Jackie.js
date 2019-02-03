@@ -1,41 +1,14 @@
-import React, {Component} from 'react';
-import Typed from "../../../node_modules/typed.js/lib/typed";
+import React from 'react';
 import StageContainer from '../StageContainer';
 import CaptchaGrid from "../CaptchaGrid";
+import StageComponent from "./StageComponent";
 
-export default class Jackie extends Component {
+export default class Jackie extends StageComponent {
   constructor(props) {
     super(props);
     this.selectedIndices = this.initIndices();
-    this.state = {
-      isTyping: true,
-      isStageVisible: false,
-      isCaptchaGridVisible: false,
-      isFirstImageComplete: false,
-      selectedIndices: this.selectedIndices
-    };
-  }
-
-  componentDidMount() {
-    setTimeout(this.reveal, 10);
-  }
-
-  reveal = () => {
-    this.props.typedOptions.onComplete = () => {
-      this.setState({
-        isTyping: false,
-        isCaptchaGridVisible: true
-      });
-    };
-    this.typed = new Typed(this.textElement, this.props.typedOptions);
-    this.typed.start();
-    this.setState({
-      isStageVisible: true,
-    });
-  };
-
-  componentWillUnmount() {
-    this.typed.destroy();
+    this.state.isFirstImageComplete = false;
+    this.state.selectedIndices = this.selectedIndices;
   }
 
   toggleSelectedIndex = (index) => {
@@ -46,7 +19,7 @@ export default class Jackie extends Component {
     if (!this.state.isFirstImageComplete) {
       if (this.selectedIndices.every((value, index) => value === this.props.correctIndices[0][index])) {
         this.setState({
-          isCaptchaGridVisible: false,
+          isImageElementVisible: false,
         });
         setTimeout(this.loadSecondCaptchaImage, 1000);
       }
@@ -71,7 +44,7 @@ export default class Jackie extends Component {
       isFirstImageComplete: true
     });
     setTimeout(() => {
-      this.setState({isCaptchaGridVisible: true})
+      this.setState({isImageElementVisible: true})
     }, 1000);
   };
 
@@ -84,7 +57,7 @@ export default class Jackie extends Component {
         }}/>
         </div>
           <CaptchaGrid images={this.state.isFirstImageComplete? this.props.secondImage : this.props.firstImage}
-                       isVisible={this.state.isCaptchaGridVisible}
+                       isVisible={this.state.isImageElementVisible}
                        onSelect={this.toggleSelectedIndex}
                        selectedIndices={this.state.selectedIndices}/>
       </StageContainer>
