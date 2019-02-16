@@ -4,6 +4,7 @@ import Primer from './stages/Primer'
 import Jackie from "./stages/Jackie";
 import DoYouWipe from "./stages/DoYouWipe";
 import Shawn from "./stages/Shawn";
+import Delphine from "./stages/Delphine";
 
 export default class Pipeline extends Component {
   constructor(props) {
@@ -98,6 +99,19 @@ export default class Pipeline extends Component {
   };
 
   loadDelphineStage = () => {
+    this.typedOptions.strings = ["", "Question four", "Voulez-vous coucher avec moi ce soir?"];
+    const delphineStageComponent =
+      <Delphine typedOptions={this.typedOptions} onStageComplete={this.loadMonaStage}/>;
+    this.setState({
+      currentStage: delphineStageComponent
+    });
+  };
+
+  loadMonaStage = () => {
+
+  };
+
+  loadOliverStage = () => {
 
   };
 

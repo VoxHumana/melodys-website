@@ -16,13 +16,6 @@ const IsHeWhiteButton = styled(Button)`
 `;
 
 export default class DoYouWipe extends StageComponent {
-  onButtonClick = () => {
-    this.setState({
-      isStageVisible: false
-    });
-    setTimeout(this.props.onStageComplete, 1000);
-  };
-
   render() {
     return(
       <StageContainer isStageVisible={this.state.isStageVisible}>
@@ -33,8 +26,8 @@ export default class DoYouWipe extends StageComponent {
         </div>
         <ButtonsContainer
           visible={!this.state.isTyping}>>
-          <WhatButton onClick={this.onButtonClick}>What?</WhatButton>
-          <IsHeWhiteButton onClick={this.onButtonClick}>Is he white?</IsHeWhiteButton>
+          <WhatButton onClick={this.onCorrectButtonClick}>What?</WhatButton>
+          <IsHeWhiteButton onClick={this.onCorrectButtonClick}>Is he white?</IsHeWhiteButton>
         </ButtonsContainer>
       </StageContainer>
     )

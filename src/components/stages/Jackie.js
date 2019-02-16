@@ -52,14 +52,14 @@ export default class Jackie extends StageComponent {
     return (
       <StageContainer isStageVisible={this.state.isStageVisible}>
         <div>
-        <span ref={(ele) => {
-          this.textElement = ele;
-        }}/>
+          <span ref={(ele) => {
+            this.textElement = ele;
+          }}/>
         </div>
-          <CaptchaGrid images={this.state.isFirstImageComplete? this.props.secondImage : this.props.firstImage}
-                       isVisible={this.state.isImageElementVisible}
-                       onSelect={this.toggleSelectedIndex}
-                       selectedIndices={this.state.selectedIndices}/>
+        <CaptchaGrid images={this.state.isFirstImageComplete ? this.props.secondImage : this.props.firstImage}
+                     isVisible={this.state.isImageElementVisible}
+                     onSelect={this.toggleSelectedIndex}
+                     selectedIndices={this.state.selectedIndices}/>
       </StageContainer>
     );
   }

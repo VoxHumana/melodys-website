@@ -33,4 +33,18 @@ export default class StageComponent extends Component {
       isStageVisible: true
     });
   };
+
+  hide = () => {
+    this.setState({
+      isStageVisible: false,
+      isImageElementVisible: false
+    });
+  };
+
+  onCorrectButtonClick = () => {
+    this.setState({
+      isStageVisible: false
+    });
+    setTimeout(this.props.onStageComplete, 1000);
+  }
 }
