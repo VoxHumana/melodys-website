@@ -5,6 +5,41 @@ import Jackie from "./stages/Jackie";
 import DoYouWipe from "./stages/DoYouWipe";
 import Shawn from "./stages/Shawn";
 import Delphine from "./stages/Delphine";
+import Mona from "./stages/Mona";
+import cap1_1 from "../img/cap1/001.png";
+import cap1_2 from "../img/cap1/002.png";
+import cap1_3 from "../img/cap1/003.png";
+import cap1_4 from "../img/cap1/004.png";
+import cap1_5 from "../img/cap1/005.png";
+import cap1_6 from "../img/cap1/006.png";
+import cap1_7 from "../img/cap1/007.png";
+import cap1_8 from "../img/cap1/008.png";
+import cap1_9 from "../img/cap1/009.png";
+import cap1_10 from "../img/cap1/010.png";
+import cap1_11 from "../img/cap1/011.png";
+import cap1_12 from "../img/cap1/012.png";
+import cap1_13 from "../img/cap1/013.png";
+import cap1_14 from "../img/cap1/014.png";
+import cap1_15 from "../img/cap1/015.png";
+import cap1_16 from "../img/cap1/016.png";
+import cap2_1 from "../img/cap2/001.png";
+import cap2_2 from "../img/cap2/002.png";
+import cap2_3 from "../img/cap2/003.png";
+import cap2_4 from "../img/cap2/004.png";
+import cap2_5 from "../img/cap2/005.png";
+import cap2_6 from "../img/cap2/006.png";
+import cap2_7 from "../img/cap2/007.png";
+import cap2_8 from "../img/cap2/008.png";
+import cap2_9 from "../img/cap2/009.png";
+import cap2_10 from "../img/cap2/010.png";
+import cap2_11 from "../img/cap2/011.png";
+import cap2_12 from "../img/cap2/012.png";
+import cap2_13 from "../img/cap2/013.png";
+import cap2_14 from "../img/cap2/014.png";
+import cap2_15 from "../img/cap2/015.png";
+import cap2_16 from "../img/cap2/016.png";
+import CrocodileDundee from "./stages/CrocodileDundee";
+
 
 export default class Pipeline extends Component {
   constructor(props) {
@@ -13,11 +48,11 @@ export default class Pipeline extends Component {
       currentStage: <div/>
     };
     this.typedOptions = {
-      typeSpeed: 60, //TODO: Make this a configurable value
-      backSpeed: 60, //TODO: Make this a configurable value
+      typeSpeed: 60,
+      backSpeed: 60,
       backDelay: 1500
     };
-    setTimeout(this.loadShawnStage, 1000);
+    setTimeout(this.loadCrocodileDundeeStage, 1000);
   }
 
   loadWelcomeStage = () => {
@@ -35,24 +70,35 @@ export default class Pipeline extends Component {
     this.typedOptions.strings = ["", "Alright", "Let's try a little quiz", "Answer the questions to prove that you're <strong><i>really</i></strong> Melody", "Ready?"];
     const primerStageComponent = <Primer
       typedOptions={this.typedOptions}
-      onStageComplete={this.loadJackieStage}
+      onStageComplete={this.loadCrocodileDundeeStage}
     />;
     this.setState({
       currentStage: primerStageComponent
     });
   };
 
+  loadCrocodileDundeeStage = () => {
+    this.typedOptions.strings = ["", "Question one", "Which one of these is a knife?"];
+    const crocodileDundeeStageComponent = <CrocodileDundee
+      typedOptions={this.typedOptions}
+      onStageComplete={this.loadJackieStage}
+    />;
+    this.setState({
+      currentStage: crocodileDundeeStageComponent
+    })
+  };
+
   loadJackieStage = () => {
     this.typedOptions.strings = ["", "Question one", "Select all squares with Jackie"];
-    let captchaImage1 = ["/img/cap1/001.png", "/img/cap1/002.png", "/img/cap1/003.png", "/img/cap1/004.png",
-      "/img/cap1/005.png", "/img/cap1/006.png", "/img/cap1/007.png", "/img/cap1/008.png",
-      "/img/cap1/009.png", "/img/cap1/010.png", "/img/cap1/011.png", "/img/cap1/012.png",
-      "/img/cap1/013.png", "/img/cap1/014.png", "/img/cap1/015.png", "/img/cap1/016.png"];
+    let captchaImage1 = [cap1_1, cap1_2, cap1_3, cap1_4,
+      cap1_5, cap1_6, cap1_7, cap1_8,
+      cap1_9, cap1_10, cap1_11, cap1_12,
+      cap1_13, cap1_14, cap1_15, cap1_16];
 
-    let captchaImage2 = ["/img/cap2/001.png", "/img/cap2/002.png", "/img/cap2/003.png", "/img/cap2/004.png",
-      "/img/cap2/005.png", "/img/cap2/006.png", "/img/cap2/007.png", "/img/cap2/008.png",
-      "/img/cap2/009.png", "/img/cap2/010.png", "/img/cap2/011.png", "/img/cap2/012.png",
-      "/img/cap2/013.png", "/img/cap2/014.png", "/img/cap2/015.png", "/img/cap2/016.png"];
+    let captchaImage2 = [cap2_1, cap2_2, cap2_3, cap2_4,
+      cap2_5, cap2_6, cap2_7, cap2_8,
+      cap2_9, cap2_10, cap2_11, cap2_12,
+      cap2_13, cap2_14, cap2_15, cap2_16];
 
     let correctIndices =
       [
@@ -67,7 +113,7 @@ export default class Pipeline extends Component {
       ];
     const jackieStageComponent = <Jackie
       typedOptions={this.typedOptions}
-      onStageComplete={this.loadDoYouWipeStage}
+      onStageComplete={this.loadShawnStage}
       firstImage={captchaImage1}
       secondImage={captchaImage2}
       correctIndices={correctIndices}
@@ -77,20 +123,8 @@ export default class Pipeline extends Component {
     });
   };
 
-  loadDoYouWipeStage = () => {
-    this.typedOptions.strings = ["", "Question two", "Do you wipe?"];
-    const wipeStageComponent =
-      <DoYouWipe
-        typedOptions={this.typedOptions}
-        onStageComplete={this.loadShawnStage}
-      />;
-    this.setState({
-      currentStage: wipeStageComponent
-    });
-  };
-
   loadShawnStage = () => {
-    this.typedOptions.strings = ["", "Question three", "Who is this angelic singer?"];
+    this.typedOptions.strings = ["", "Question two", "Who is this angelic singer?"];
     const shawnStageComponent =
       <Shawn typedOptions={this.typedOptions} onStageComplete={this.loadDelphineStage}/>;
     this.setState({
@@ -99,16 +133,33 @@ export default class Pipeline extends Component {
   };
 
   loadDelphineStage = () => {
-    this.typedOptions.strings = ["", "Question four", "Voulez-vous coucher avec moi ce soir?"];
+    this.typedOptions.strings = ["", "Question three", "Voulez-vous coucher avec moi ce soir?"];
     const delphineStageComponent =
-      <Delphine typedOptions={this.typedOptions} onStageComplete={this.loadMonaStage}/>;
+      <Delphine typedOptions={this.typedOptions} onStageComplete={this.loadDoYouWipeStage}/>;
     this.setState({
       currentStage: delphineStageComponent
     });
   };
 
-  loadMonaStage = () => {
+  loadDoYouWipeStage = () => {
+    this.typedOptions.strings = ["", "Question four", "Do you wipe?"];
+    const wipeStageComponent =
+      <DoYouWipe
+        typedOptions={this.typedOptions}
+        onStageComplete={this.loadMonaStage}
+      />;
+    this.setState({
+      currentStage: wipeStageComponent
+    });
+  };
 
+  loadMonaStage = () => {
+    this.typedOptions.strings = ["", "Question five", "Below are two truths and a lie about Mona", "Which is the lie?"];
+    const monaStageComponent =
+      <Mona typedOptions={this.typedOptions} onStageComplete={this.loadOliverStage}/>;
+    this.setState({
+      currentStage: monaStageComponent
+    });
   };
 
   loadOliverStage = () => {

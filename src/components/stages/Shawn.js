@@ -1,32 +1,14 @@
 import React from 'react';
 import ButtonsContainer from '../ButtonsContainer';
 import StageContainer from "../StageContainer";
-import styled from "styled-components";
-import Button from "../Button";
 import Video from "../Video";
 import StageComponent from "./StageComponent";
-
-const BraceYourselfImg = styled.img`
-  align-self: center;
-  border: 6px solid #ff90ca;
-  border-radius: 4px;
-  box-shadow: inset 0 8px 12px 6px rgba(0,0,0,0.2), inset 0 6px 16px 6px rgba(0,0,0,0.19), 0 8px 12px 6px rgba(0,0,0,0.2), 0 6px 16px 6px rgba(0,0,0,0.19);
-  margin: 8px;
-  max-height: 600px;
-  opacity: ${(props) => props.isVisible ? 1 : 0};
-  transition: 1s;
-  width: auto;
-`;
-
-const ShawnButton = styled(Button)`
-  border-color: #59ff48;
-  color: #59ff48;
-`;
-
-const SeanButton = styled(Button)`
-  border-color: #ffbe25;
-  color: #ffbe25;
-`;
+import GreenButton from "../GreenButton";
+import OrangeButton from "../OrangeButton";
+import TypedText from "../TypedText";
+import Img from "../Img";
+import shawnLetItGo from '../../img/shawn_let_it_go.mp4';
+import braceYourself from '../../img/brace_yourself.jpg';
 
 export default class Shawn extends StageComponent {
   onSeanButtonClick = () => {
@@ -52,36 +34,30 @@ export default class Shawn extends StageComponent {
   };
 
   render() {
-    let typedText =
-      <div>
-        <span ref={(ele) => {
-          this.textElement = ele;
-        }}/>
-      </div>;
     if (this.state.winterIsComing == null || this.state.winterIsComing === false) {
       return (
         <StageContainer isStageVisible={this.state.isStageVisible}>
-          {typedText}
+          <TypedText/>
           <Video isVisible={this.state.isImageElementVisible} controls>
-            <source src="./img/shawn_let_it_go.mp4" type="video/mp4"/>
+            <source src={shawnLetItGo} type="video/mp4"/>
             Your browser does not support HTML5 video.
           </Video>
           <ButtonsContainer
             visible={!this.state.isTyping}>
-            <ShawnButton onClick={this.onCorrectButtonClick}>Shawn He</ShawnButton>
-            <SeanButton onClick={this.onSeanButtonClick}>Sean Bean</SeanButton>
+            <GreenButton onClick={this.onCorrectButtonClick}>Shawn He</GreenButton>
+            <OrangeButton onClick={this.onSeanButtonClick}>Sean Bean</OrangeButton>
           </ButtonsContainer>
         </StageContainer>
       );
     } else {
       return (
         <StageContainer isStageVisible={this.state.isStageVisible}>
-          {typedText}
-          <BraceYourselfImg src="./img/brace_yourself.jpg"
+          <TypedText/>
+          <Img src={braceYourself}
                             isVisible={this.state.isImageElementVisible}/>
           <ButtonsContainer
             visible={true}>
-            <SeanButton onClick={this.winterIsComing}>Winter is coming</SeanButton>
+            <GreenButton onClick={this.winterIsComing}>Winter is coming</GreenButton>
           </ButtonsContainer>
         </StageContainer>
       );

@@ -1,33 +1,20 @@
 import React from 'react';
 import StageContainer from '../StageContainer';
 import ButtonsContainer from "../ButtonsContainer";
-import styled from "styled-components";
-import Button from "../Button";
 import StageComponent from "./StageComponent";
-
-const WhatButton = styled(Button)`
-  border-color: #59ff48;
-  color: #59ff48;
-`;
-
-const IsHeWhiteButton = styled(Button)`
-  border-color: #ffbe25;
-  color: #ffbe25;
-`;
+import GreenButton from "../GreenButton";
+import OrangeButton from "../OrangeButton";
+import TypedText from "../TypedText";
 
 export default class DoYouWipe extends StageComponent {
   render() {
     return(
       <StageContainer isStageVisible={this.state.isStageVisible}>
-        <div>
-          <span ref={(ele) => {
-            this.textElement = ele;
-          }}/>
-        </div>
+        <TypedText/>
         <ButtonsContainer
-          visible={!this.state.isTyping}>>
-          <WhatButton onClick={this.onCorrectButtonClick}>What?</WhatButton>
-          <IsHeWhiteButton onClick={this.onCorrectButtonClick}>Is he white?</IsHeWhiteButton>
+          visible={!this.state.isTyping}>
+          <GreenButton onClick={this.onCorrectButtonClick}>What?</GreenButton>
+          <OrangeButton onClick={this.onCorrectButtonClick}>Is he white?</OrangeButton>
         </ButtonsContainer>
       </StageContainer>
     )

@@ -1,4 +1,4 @@
-import {Component} from 'react';
+import React, {Component} from 'react';
 import Typed from "typed.js";
 
 export default class StageComponent extends Component {
@@ -12,22 +12,24 @@ export default class StageComponent extends Component {
   }
 
   componentDidMount() {
-    setTimeout(this.reveal, 1000);
+    setTimeout(() => {
+      this.reveal(this.props.typedOptions)
+    }, 1000);
   }
 
   componentWillUnmount() {
     this.typed.destroy();
   }
 
-  reveal = () => {
-    console.log(this.props);
-    this.props.typedOptions.onComplete = () => {
+  reveal = (typedOptions) => {
+    console.log(typeof typedOptions == 'undefined');
+    typedOptions.onComplete = () => {
       this.setState({
         isTyping: false,
         isImageElementVisible: true,
       })
     };
-    this.typed = new Typed(this.textElement, this.props.typedOptions);
+    this.typed = new Typed('#typed', typedOptions);
     this.typed.start();
     this.setState({
       isStageVisible: true
