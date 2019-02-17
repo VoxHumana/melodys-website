@@ -78,7 +78,7 @@ export default class Pipeline extends Component {
   };
 
   loadCrocodileDundeeStage = () => {
-    this.typedOptions.strings = ["", "Question one", "Which one of these is a knife?"];
+    this.typedOptions.strings = ["", "Question one:^500 object recognition", "Which one of these is a knife?"];
     const crocodileDundeeStageComponent = <CrocodileDundee
       typedOptions={this.typedOptions}
       onStageComplete={this.loadJackieStage}
@@ -89,7 +89,7 @@ export default class Pipeline extends Component {
   };
 
   loadJackieStage = () => {
-    this.typedOptions.strings = ["", "Question one", "Select all squares with Jackie"];
+    this.typedOptions.strings = ["", "Question two:^500 are you a robot?", "Select all squares with Jackie"];
     let captchaImage1 = [cap1_1, cap1_2, cap1_3, cap1_4,
       cap1_5, cap1_6, cap1_7, cap1_8,
       cap1_9, cap1_10, cap1_11, cap1_12,
@@ -124,7 +124,7 @@ export default class Pipeline extends Component {
   };
 
   loadShawnStage = () => {
-    this.typedOptions.strings = ["", "Question two", "Who is this angelic singer?"];
+    this.typedOptions.strings = ["", "Question three:^500 human recognition", "Who is this angelic singer?"];
     const shawnStageComponent =
       <Shawn typedOptions={this.typedOptions} onStageComplete={this.loadDelphineStage}/>;
     this.setState({
@@ -133,7 +133,7 @@ export default class Pipeline extends Component {
   };
 
   loadDelphineStage = () => {
-    this.typedOptions.strings = ["", "Question three", "Voulez-vous coucher avec moi ce soir?"];
+    this.typedOptions.strings = ["", "Question four:^500 inter-personal relations", "Voulez-vous coucher avec moi ce soir?"];
     const delphineStageComponent =
       <Delphine typedOptions={this.typedOptions} onStageComplete={this.loadDoYouWipeStage}/>;
     this.setState({
@@ -142,7 +142,7 @@ export default class Pipeline extends Component {
   };
 
   loadDoYouWipeStage = () => {
-    this.typedOptions.strings = ["", "Question four", "Do you wipe?"];
+    this.typedOptions.strings = ["", "Question five:^500 personal hygiene", "Do you wipe?"];
     const wipeStageComponent =
       <DoYouWipe
         typedOptions={this.typedOptions}
@@ -154,7 +154,7 @@ export default class Pipeline extends Component {
   };
 
   loadMonaStage = () => {
-    this.typedOptions.strings = ["", "Question five", "Below are two truths and a lie about Mona", "Which is the lie?"];
+    this.typedOptions.strings = ["", "Question six:^500 lie detection", "Below are two truths and a lie about Mona", "Which is the lie?"];
     const monaStageComponent =
       <Mona typedOptions={this.typedOptions} onStageComplete={this.loadOliverStage}/>;
     this.setState({

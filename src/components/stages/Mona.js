@@ -47,17 +47,6 @@ export default class Mona extends StageComponent {
     }, 1000)
   };
 
-  returnToDefaultView = () => {
-    this.hide();
-    setTimeout(() => {
-      this.setState({
-        viewToDisplay: "Default",
-        isStageVisible: true,
-        isImageElementVisible: true
-      })
-    }, 1000)
-  };
-
   render() {
     switch (this.state.viewToDisplay) {
       case null:
