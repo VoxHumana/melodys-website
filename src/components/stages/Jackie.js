@@ -11,6 +11,7 @@ export default class Jackie extends StageComponent {
     this.loadedIndices = this.initIndices();
     this.state.isFirstImageComplete = false;
     this.state.selectedIndices = this.selectedIndices;
+    this.state.imagesLoaded = false;
   }
 
   toggleSelectedIndex = (index) => {
