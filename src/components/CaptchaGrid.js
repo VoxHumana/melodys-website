@@ -17,11 +17,18 @@ export default function (props) {
   let index = 0;
   return (
     <StyledGridContainer isVisible={props.isVisible}>
+
       {
         props.images.map((imageSrc) => {
-              let cell = <GridCell imageSrc={imageSrc} index={index} key={index} selected={props.selectedIndices[index]} onSelect={props.onSelect}/>;
-              index++;
-              return cell
+            let cell = <GridCell imageSrc={imageSrc}
+                                 index={index}
+                                 key={index}
+                                 selected={props.selectedIndices[index]}
+                                 onSelect={props.onSelect}
+                                 onImageLoad={props.onImageLoad}
+                                 imagesLoaded={props.imagesLoaded}/>;
+            index++;
+            return cell
           }
         )
       }

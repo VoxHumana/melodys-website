@@ -48,11 +48,11 @@ export default class Pipeline extends Component {
       currentStage: <div/>
     };
     this.typedOptions = {
-      typeSpeed: 60,
-      backSpeed: 60,
-      backDelay: 1500
+      typeSpeed: 50,
+      backSpeed: 30,
+      backDelay: 1300
     };
-    setTimeout(this.loadCrocodileDundeeStage, 1000);
+    setTimeout(this.loadJackieStage, 1000);
   }
 
   loadWelcomeStage = () => {
@@ -67,7 +67,7 @@ export default class Pipeline extends Component {
   };
 
   loadPrimerStage = () => {
-    this.typedOptions.strings = ["", "Alright", "Let's try a little quiz", "Answer the questions to prove that you're <strong><i>really</i></strong> Melody", "Ready?"];
+    this.typedOptions.strings = ["", "Alright", "Let's try a little quiz", "Answer correctly to prove that you're <strong><i>really</i></strong> Melody", "Ready?"];
     const primerStageComponent = <Primer
       typedOptions={this.typedOptions}
       onStageComplete={this.loadCrocodileDundeeStage}

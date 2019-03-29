@@ -8,6 +8,7 @@ export default class Jackie extends StageComponent {
   constructor(props) {
     super(props);
     this.selectedIndices = this.initIndices();
+    this.loadedIndices = this.initIndices();
     this.state.isFirstImageComplete = false;
     this.state.selectedIndices = this.selectedIndices;
   }
@@ -49,6 +50,15 @@ export default class Jackie extends StageComponent {
     }, 1000);
   };
 
+  onImageLoad = (index) => {
+    this.loadedIndices[index] = true;
+    if (this.loadedIndices.every((x) => x === true) && !this.state.imagesLoaded) {
+      this.setState({
+        imagesLoaded: true
+      })
+    }
+  };
+
   render() {
     return (
       <StageContainer isStageVisible={this.state.isStageVisible}>
@@ -56,7 +66,9 @@ export default class Jackie extends StageComponent {
         <CaptchaGrid images={this.state.isFirstImageComplete ? this.props.secondImage : this.props.firstImage}
                      isVisible={this.state.isImageElementVisible}
                      onSelect={this.toggleSelectedIndex}
-                     selectedIndices={this.state.selectedIndices}/>
+                     selectedIndices={this.state.selectedIndices}
+                     onImageLoad={this.onImageLoad}
+                     imagesLoaded={this.state.imagesLoaded}/>
       </StageContainer>
     );
   }
