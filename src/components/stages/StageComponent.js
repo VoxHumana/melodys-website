@@ -22,7 +22,6 @@ export default class StageComponent extends Component {
   }
 
   reveal = (typedOptions) => {
-    console.log(typeof typedOptions == 'undefined');
     typedOptions.onComplete = () => {
       this.setState({
         isTyping: false,

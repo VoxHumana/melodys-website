@@ -48,11 +48,11 @@ export default class Pipeline extends Component {
       currentStage: <div/>
     };
     this.typedOptions = {
-      typeSpeed: 50,
-      backSpeed: 30,
+      typeSpeed: 30,
+      backSpeed: 10,
       backDelay: 1300
     };
-    setTimeout(this.loadJackieStage, 1000);
+    setTimeout(this.loadCrocodileDundeeStage, 1000);
   }
 
   loadWelcomeStage = () => {
