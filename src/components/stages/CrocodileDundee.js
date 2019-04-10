@@ -11,7 +11,6 @@ import thatsAKnifeGif from "../../img/thats_a_knife.gif"
 import thatsNotAKnifeGif from "../../img/thats_not_a_knife.gif";
 import styled from "styled-components";
 import Img from "../Img";
-import ContentLoader from 'react-content-loader';
 import Loader from "../Loader";
 
 let ClickableThumbnail = styled.img`
@@ -57,10 +56,7 @@ export default class CrocodileDundee extends StageComponent {
             <ButtonsContainer visible={!this.state.isTyping}>
               <GreenButton onClick={this.onBowieKnifeClick}>
                 {this.state.isBowieImageLoaded ? null :
-                  <Loader
-                    height={300}
-                    width={300}
-                  />}
+                  <Loader height={300} width={300}/>}
                 <ClickableThumbnail src={bowieKnifeImg}
                                     onLoad={() => {
                                       this.setState({isBowieImageLoaded: true})
@@ -70,17 +66,7 @@ export default class CrocodileDundee extends StageComponent {
               </GreenButton>
               <OrangeButton onClick={this.onSwitchbladeClick}>
                 {this.state.isSwitchbladeImageLoaded ? null :
-                  <ContentLoader
-                    height={300}
-                    width={400}
-                    speed={2}
-                    primaryColor="#f3f3f3"
-                    secondaryColor="#d4d3d3"
-                    style={{width: 400, height: 300}}
-                  >
-                    <rect x="0" y="0" rx="5" ry="5" width="400" height="300"/>
-                    <rect x="152" y="98" rx="0" ry="0" width="0" height="0"/>
-                  </ContentLoader>}
+                  <Loader height={300} width={400}/>}
                 <ClickableThumbnail src={switchbladeImg}
                                     onLoad={() => {
                                       this.setState({isSwitchbladeImageLoaded: true})
@@ -96,22 +82,12 @@ export default class CrocodileDundee extends StageComponent {
           <StageContainer isStageVisible={this.state.isStageVisible}>
             <TypedText/>
             {this.state.isThatsAKnifeGifLoaded ? null :
-              <ContentLoader
-                height={240}
-                width={600}
-                speed={2}
-                primaryColor="#f3f3f3"
-                secondaryColor="#d4d3d3"
-                style={{width: 600, height: 240}}
-              >
-                <rect x="0" y="0" rx="5" ry="5" width="600" height="240"/>
-                <rect x="152" y="98" rx="0" ry="0" width="0" height="0"/>
-              </ContentLoader>}
+              <Loader height={260} width={612}/>}
             <Img src={thatsAKnifeGif}
                  onLoad={() => {
                    this.setState({isThatsAKnifeGifLoaded: true})
                  }}
-                 display={this.state.isThatsAKnifeGifLoaded}
+                 isLoaded={this.state.isThatsAKnifeGifLoaded}
                  isVisible={this.state.isImageElementVisible}/>
             <ButtonsContainer visible={!this.state.isTyping}>
               <GreenButton onClick={this.onCorrectButtonClick}>
@@ -125,15 +101,12 @@ export default class CrocodileDundee extends StageComponent {
           <StageContainer isStageVisible={this.state.isStageVisible}>
             <TypedText/>
             {this.state.isThatsNotAKnifeGifLoaded ? null :
-              <Loader
-                height={260}
-                width={612}
-              />}
+              <Loader height={260} width={612}/>}
             <Img src={thatsNotAKnifeGif}
                  onLoad={() => {
                    this.setState({isThatsNotAKnifeGifLoaded: true})
                  }}
-                 display={this.state.isThatsNotAKnifeGifLoaded}
+                 isLoaded={this.state.isThatsNotAKnifeGifLoaded}
                  isVisible={this.state.isImageElementVisible}/>
             <ButtonsContainer visible={!this.state.isTyping}>
               <OrangeButton onClick={this.returnToDefaultView}>

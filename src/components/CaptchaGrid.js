@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import React from "react";
 
 let StyledGridContainer = styled.div`
-  display: grid;
+  display: ${(props) => props.imagesLoaded ? 'grid' : 'none'};
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
   max-width: 616px;
@@ -16,8 +16,8 @@ let StyledGridContainer = styled.div`
 export default function (props) {
   let index = 0;
   return (
-    <StyledGridContainer isVisible={props.isVisible}>
-
+    <StyledGridContainer isVisible={props.isVisible}
+                         imagesLoaded={props.imagesLoaded}>
       {
         props.images.map((imageSrc) => {
             let cell = <GridCell imageSrc={imageSrc}
@@ -25,8 +25,7 @@ export default function (props) {
                                  key={index}
                                  selected={props.selectedIndices[index]}
                                  onSelect={props.onSelect}
-                                 onImageLoad={props.onImageLoad}
-                                 imagesLoaded={props.imagesLoaded}/>;
+                                 onImageLoad={props.onImageLoad}/>;
             index++;
             return cell
           }

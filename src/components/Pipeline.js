@@ -52,7 +52,7 @@ export default class Pipeline extends Component {
       backSpeed: 10,
       backDelay: 1300
     };
-    setTimeout(this.loadCrocodileDundeeStage, 1000);
+    setTimeout(this.loadDelphineStage, 1000);
   }
 
   loadWelcomeStage = () => {

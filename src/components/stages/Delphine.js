@@ -10,8 +10,15 @@ import Img from "../Img";
 import delphineKaraoke from '../../img/delphine_karaoke.mp4';
 import delphineScream from '../../img/delphine_the_scream.gif';
 import delphineGeishaKiss from '../../img/delphine_geisha_kiss.gif';
+import Loader from "../Loader";
 
 export default class Delphine extends StageComponent {
+  constructor(props) {
+    super(props);
+    this.state.isDelphineKaraokeVideoLoaded = false;
+    this.state.isDelphineScreamLoaded = false;
+    this.state.isDelphineGeishaKissLoaded = false;
+  }
   onFromageButtonClick = () => {
     this.hide();
     setTimeout(() => {
@@ -54,7 +61,13 @@ export default class Delphine extends StageComponent {
         return (
           <StageContainer isStageVisible={this.state.isStageVisible}>
             <TypedText/>
-            <Video isVisible={this.state.isImageElementVisible} controls>
+            {this.state.isDelphineKaraokeVideoLoaded ? null : <Loader height={540} width={960}/>}
+            <Video isVisible={this.state.isImageElementVisible}
+                   isLoaded={this.state.isDelphineKaraokeVideoLoaded}
+                   onCanPlay={() => {
+                     this.setState({isDelphineKaraokeVideoLoaded: true})
+                   }}
+                   controls>
               <source src={delphineKaraoke} type="video/mp4"/>
               Your browser does not support HTML5 video.
             </Video>
@@ -69,8 +82,14 @@ export default class Delphine extends StageComponent {
         return (
           <StageContainer isStageVisible={this.state.isStageVisible}>
             <TypedText/>
+            {this.state.isDelphineGeishaKissLoaded ? null : <Loader height={252} width={252}/>}
             <Img src={delphineGeishaKiss}
-                               isVisible={this.state.isImageElementVisible}/>
+                 onLoad={() => {
+                   this.setState({isDelphineGeishaKissLoaded: true})
+                 }}
+                 isVisible={this.state.isImageElementVisible}
+                 isLoaded={this.state.isDelphineGeishaKissLoaded}
+            />
             <ButtonsContainer
               visible={true}>
               <GreenButton onClick={this.onCorrectButtonClick}>Tabernac!</GreenButton>
@@ -81,8 +100,14 @@ export default class Delphine extends StageComponent {
       return (
         <StageContainer isStageVisible={this.state.isStageVisible}>
           <TypedText/>
+          {this.state.isDelphineScreamLoaded ? null : <Loader height={252} width={252}/>}
           <Img src={delphineScream}
-                             isVisible={this.state.isImageElementVisible}/>
+               onLoad={() => {
+                 this.setState({isDelphineScreamLoaded: true})
+               }}
+               isVisible={this.state.isImageElementVisible}
+               isLoaded={this.state.isDelphineScreamLoaded}
+          />
           <ButtonsContainer
             visible={true}>
             <OrangeButton onClick={this.onSacreBleuButtonClick}>Sacré bleu!</OrangeButton>

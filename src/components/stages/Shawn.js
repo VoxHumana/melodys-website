@@ -9,8 +9,14 @@ import TypedText from "../TypedText";
 import Img from "../Img";
 import shawnLetItGo from '../../img/shawn_let_it_go.mp4';
 import braceYourself from '../../img/brace_yourself.jpg';
+import Loader from "../Loader";
 
 export default class Shawn extends StageComponent {
+  constructor(props) {
+    super(props);
+    this.state.isShawnVideoLoaded = false;
+    this.state.isWinterIsComingImageLoaded = false;
+  }
   onSeanButtonClick = () => {
     this.hide();
     setTimeout(() => {
@@ -38,7 +44,13 @@ export default class Shawn extends StageComponent {
       return (
         <StageContainer isStageVisible={this.state.isStageVisible}>
           <TypedText/>
-          <Video isVisible={this.state.isImageElementVisible} controls>
+          {this.state.isShawnVideoLoaded ? null : <Loader height={600} width={337.5}/>}
+          <Video isVisible={this.state.isImageElementVisible}
+                 isLoaded={this.state.isShawnVideoLoaded}
+                 onCanPlay={() => {
+                   this.setState({isShawnVideoLoaded: true})
+                 }}
+                 controls>
             <source src={shawnLetItGo} type="video/mp4"/>
             Your browser does not support HTML5 video.
           </Video>
@@ -53,8 +65,13 @@ export default class Shawn extends StageComponent {
       return (
         <StageContainer isStageVisible={this.state.isStageVisible}>
           <TypedText/>
+          {this.state.isWinterIsComingImageLoaded ? null : <Loader height={600} width={436}/>}
           <Img src={braceYourself}
-                            isVisible={this.state.isImageElementVisible}/>
+               onLoad={() => {
+                 this.setState({isWinterIsComingImageLoaded: true})
+               }}
+               isVisible={this.state.isImageElementVisible}
+               isLoaded={this.state.isWinterIsComingImageLoaded}/>
           <ButtonsContainer
             visible={true}>
             <GreenButton onClick={this.winterIsComing}>Winter is coming</GreenButton>

@@ -14,7 +14,9 @@ export default function (props) {
       <Image src={props.imageSrc}
              onClick={() => props.onSelect(props.index)}
              selected={props.selected}
-             onLoad={props.onImageLoad(props.index)}/>
+             onLoad={() => {
+               props.onImageLoad(props.index)
+             }}/>
   )
 }
 
