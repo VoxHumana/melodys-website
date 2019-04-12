@@ -61,7 +61,10 @@ export default class Delphine extends StageComponent {
         return (
           <StageContainer isStageVisible={this.state.isStageVisible}>
             <TypedText/>
-            {this.state.isDelphineKaraokeVideoLoaded ? null : <Loader height={540} width={960}/>}
+            <Loader height={540}
+                    width={960}
+                    isMediaLoaded={this.state.isDelphineKaraokeVideoLoaded}
+            />
             <Video isVisible={this.state.isImageElementVisible}
                    isLoaded={this.state.isDelphineKaraokeVideoLoaded}
                    onCanPlay={() => {
@@ -82,7 +85,10 @@ export default class Delphine extends StageComponent {
         return (
           <StageContainer isStageVisible={this.state.isStageVisible}>
             <TypedText/>
-            {this.state.isDelphineGeishaKissLoaded ? null : <Loader height={252} width={252}/>}
+            <Loader height={252}
+                    width={252}
+                    isMediaLoaded={this.state.isDelphineGeishaKissLoaded}
+            />
             <Img src={delphineGeishaKiss}
                  onLoad={() => {
                    this.setState({isDelphineGeishaKissLoaded: true})
@@ -100,7 +106,10 @@ export default class Delphine extends StageComponent {
       return (
         <StageContainer isStageVisible={this.state.isStageVisible}>
           <TypedText/>
-          {this.state.isDelphineScreamLoaded ? null : <Loader height={252} width={252}/>}
+          <Loader height={252}
+                  width={252}
+                  isMediaLoaded={this.state.isDelphineScreamLoaded}
+          />
           <Img src={delphineScream}
                onLoad={() => {
                  this.setState({isDelphineScreamLoaded: true})

@@ -39,6 +39,7 @@ import cap2_14 from "../img/cap2/014.png";
 import cap2_15 from "../img/cap2/015.png";
 import cap2_16 from "../img/cap2/016.png";
 import CrocodileDundee from "./stages/CrocodileDundee";
+import Oliver from "./stages/Oliver";
 
 
 export default class Pipeline extends Component {
@@ -48,15 +49,15 @@ export default class Pipeline extends Component {
       currentStage: <div/>
     };
     this.typedOptions = {
-      typeSpeed: 30,
-      backSpeed: 10,
+      typeSpeed: 40,
+      backSpeed: 20,
       backDelay: 1300
     };
-    setTimeout(this.loadDelphineStage, 1000);
+    setTimeout(this.loadMonaStage, 1000);
   }
 
   loadWelcomeStage = () => {
-    this.typedOptions.strings = ["", "G'day Melody!", "Let's put some shrimp on the barbie!", "But first,^1200hmmm^500.^300.^300.", "Are you^300 <strong><i>really</i></strong>^300 Melody?"];
+    this.typedOptions.strings = ["", "G'day Melody!", "Let's put some shrimp on the barbie!", "But first,^900hmmm^400.^250.^250.", "Are you^150 <strong><i>really</i></strong>^150 Melody?"];
     const welcomeStageComponent = <Welcome
       typedOptions={this.typedOptions}
       onStageComplete={this.loadPrimerStage}
@@ -124,7 +125,7 @@ export default class Pipeline extends Component {
   };
 
   loadShawnStage = () => {
-    this.typedOptions.strings = ["", "Question three:^500 human recognition", "Who is this angelic singer?"];
+    this.typedOptions.strings = ["", "Question three:^500 voice recognition", "Who is this angelic singer?"];
     const shawnStageComponent =
       <Shawn typedOptions={this.typedOptions} onStageComplete={this.loadDelphineStage}/>;
     this.setState({
@@ -163,7 +164,15 @@ export default class Pipeline extends Component {
   };
 
   loadOliverStage = () => {
+    this.typedOptions.strings = ["", "Question seven:^500 TBD", "Insert joke about Oliver here"];
+    const oliverStageComponent =
+      <Oliver typedOptions={this.typedOptions} onStageComplete={this.loadEndStage}/>;
+    this.setState({
+      currentStage: oliverStageComponent
+    })
+  };
 
+  loadEndStage = () => {
   };
 
   render() {

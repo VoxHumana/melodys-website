@@ -44,7 +44,10 @@ export default class Shawn extends StageComponent {
       return (
         <StageContainer isStageVisible={this.state.isStageVisible}>
           <TypedText/>
-          {this.state.isShawnVideoLoaded ? null : <Loader height={600} width={337.5}/>}
+          <Loader height={600}
+                  width={337.5}
+                  isMediaLoaded={this.state.isShawnVideoLoaded}
+          />
           <Video isVisible={this.state.isImageElementVisible}
                  isLoaded={this.state.isShawnVideoLoaded}
                  onCanPlay={() => {
@@ -65,7 +68,10 @@ export default class Shawn extends StageComponent {
       return (
         <StageContainer isStageVisible={this.state.isStageVisible}>
           <TypedText/>
-          {this.state.isWinterIsComingImageLoaded ? null : <Loader height={600} width={436}/>}
+          <Loader height={600}
+                  width={436}
+                  isMediaLoaded={this.state.isWinterIsComingImageLoaded}
+          />
           <Img src={braceYourself}
                onLoad={() => {
                  this.setState({isWinterIsComingImageLoaded: true})

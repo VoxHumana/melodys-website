@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import {Component} from 'react';
 import Typed from "typed.js";
 
 export default class StageComponent extends Component {

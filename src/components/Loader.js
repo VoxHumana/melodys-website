@@ -9,12 +9,15 @@ const StyledContentLoader = styled(ContentLoader)`
   margin: 8px;
 `;
 
-export default (props) =>
-  <StyledContentLoader
-    height={props.height}
-    width={props.width}
-    speed={2}
-    primaryColor="#ff73bc"
-    secondaryColor="#FFABD9"
-    style={{width: props.width, height: props.height}}
-  />
+export default (props) => {
+  return props.isMediaLoaded ?
+    null :
+    <StyledContentLoader
+      height={props.height}
+      width={props.width}
+      speed={2}
+      primaryColor="#ff73bc"
+      secondaryColor="#FFABD9"
+      style={{width: props.width, height: props.height}}
+    />
+}

@@ -12,8 +12,17 @@ import monaGradImg from '../../img/mona_graduation.jpg';
 import onePunchManGif from '../../img/one_punch_man.gif';
 import simbaImg from '../../img/simba.jpg';
 import monaDrinkingWine from '../../img/mona_tries_wine.mp4';
+import Loader from "../Loader";
 
 export default class Mona extends StageComponent {
+  constructor(props) {
+    super(props);
+    this.state.isMonaGradImageLoaded = false;
+    this.state.isOnePunchManGifLoaded = false;
+    this.state.isSimbaImageLoaded = false;
+    this.state.isMonaDrinkingWineVideoLoaded = false;
+  }
+
   onBlackBeltButtonClick = () => {
     this.hide();
     setTimeout(() => {
@@ -55,8 +64,17 @@ export default class Mona extends StageComponent {
         return (
           <StageContainer isStageVisible={this.state.isStageVisible}>
             <TypedText/>
+            <Loader height={612}
+                    width={550}
+                    isMediaLoaded={this.state.isMonaGradImageLoaded}
+            />
             <Img src={monaGradImg}
-                 isVisible={this.state.isImageElementVisible}/>
+                 onLoad={() => {
+                   this.setState({isMonaGradImageLoaded: true})
+                 }}
+                 isVisible={this.state.isImageElementVisible}
+                 isLoaded={this.state.isMonaGradImageLoaded}
+            />
             <ButtonsContainer visible={!this.state.isTyping}>
               <GreenButton onClick={this.onBlackBeltButtonClick}>She has a black belt in Taekwondo</GreenButton>
               <OrangeButton onClick={this.onSimbaButtonClick}>She has a cat called Simba</OrangeButton>
@@ -68,8 +86,17 @@ export default class Mona extends StageComponent {
         return (
           <StageContainer isStageVisible={this.state.isStageVisible}>
             <TypedText/>
+            <Loader height={292}
+                    width={512}
+                    isMediaLoaded={this.state.isOnePunchManGifLoaded}
+            />
             <Img src={onePunchManGif}
-                 isVisible={this.state.isImageElementVisible}/>
+                 onLoad={() => {
+                   this.setState({isOnePunchManGifLoaded: true})
+                 }}
+                 isVisible={this.state.isImageElementVisible}
+                 isLoaded={this.state.isOnePunchManGifLoaded}
+            />
             <ButtonsContainer visible={!this.state.isTyping}>
               <GreenButton onClick={this.returnToDefaultView}>It's true! Waan punnnch!</GreenButton>
             </ButtonsContainer>
@@ -79,8 +106,17 @@ export default class Mona extends StageComponent {
         return (
           <StageContainer isStageVisible={this.state.isStageVisible}>
             <TypedText/>
+            <Loader height={446}
+                    width={631}
+                    isMediaLoaded={this.state.isSimbaImageLoaded}
+            />
             <Img src={simbaImg}
-                 isVisible={this.state.isImageElementVisible}/>
+                 onLoad={() => {
+                   this.setState({isSimbaImageLoaded: true})
+                 }}
+                 isVisible={this.state.isImageElementVisible}
+                 isLoaded={this.state.isSimbaImageLoaded}
+            />
             <ButtonsContainer visible={!this.state.isTyping}>
               <OrangeButton onClick={this.returnToDefaultView}>She does! Meow!</OrangeButton>
             </ButtonsContainer>
@@ -90,7 +126,16 @@ export default class Mona extends StageComponent {
         return (
           <StageContainer isStageVisible={this.state.isStageVisible}>
             <TypedText/>
-            <Video isVisible={this.state.isImageElementVisible} controls>
+            <Loader height={337.5}
+                    width={600}
+                    isMediaLoaded={this.state.isMonaDrinkingWineVideoLoaded}
+            />
+            <Video isVisible={this.state.isImageElementVisible}
+                   isLoaded={this.state.isMonaDrinkingWineVideoLoaded}
+                   onCanPlay={() => {
+                     this.setState({isMonaDrinkingWineVideoLoaded: true})
+                   }}
+                   controls>
               <source src={monaDrinkingWine} type="video/mp4"/>
               Your browser does not support HTML5 video.
             </Video>

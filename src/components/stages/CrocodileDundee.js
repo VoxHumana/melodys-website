@@ -7,11 +7,11 @@ import GreenButton from "../GreenButton";
 import OrangeButton from "../OrangeButton";
 import bowieKnifeImg from "../../img/bowie_knife.jpg";
 import switchbladeImg from "../../img/switchblade.jpg";
-import thatsAKnifeGif from "../../img/thats_a_knife.gif"
-import thatsNotAKnifeGif from "../../img/thats_not_a_knife.gif";
+import thatsAKnifeVideo from "../../img/thats_a_knife.mp4"
+import thatsNotAKnifeVideo from "../../img/thats_not_a_knife.mp4";
 import styled from "styled-components";
-import Img from "../Img";
 import Loader from "../Loader";
+import Video from "../Video";
 
 let ClickableThumbnail = styled.img`
         align-self: center;
@@ -55,8 +55,10 @@ export default class CrocodileDundee extends StageComponent {
             <TypedText/>
             <ButtonsContainer visible={!this.state.isTyping}>
               <GreenButton onClick={this.onBowieKnifeClick}>
-                {this.state.isBowieImageLoaded ? null :
-                  <Loader height={300} width={300}/>}
+                <Loader height={300}
+                        width={300}
+                        isMediaLoaded={this.state.isBowieImageLoaded}
+                />
                 <ClickableThumbnail src={bowieKnifeImg}
                                     onLoad={() => {
                                       this.setState({isBowieImageLoaded: true})
@@ -65,8 +67,10 @@ export default class CrocodileDundee extends StageComponent {
                                     alt={'Bowie knife'}/>
               </GreenButton>
               <OrangeButton onClick={this.onSwitchbladeClick}>
-                {this.state.isSwitchbladeImageLoaded ? null :
-                  <Loader height={300} width={400}/>}
+                <Loader height={300}
+                        width={400}
+                        isMediaLoaded={this.state.isSwitchbladeImageLoaded}
+                />
                 <ClickableThumbnail src={switchbladeImg}
                                     onLoad={() => {
                                       this.setState({isSwitchbladeImageLoaded: true})
@@ -81,14 +85,22 @@ export default class CrocodileDundee extends StageComponent {
         return (
           <StageContainer isStageVisible={this.state.isStageVisible}>
             <TypedText/>
-            {this.state.isThatsAKnifeGifLoaded ? null :
-              <Loader height={260} width={612}/>}
-            <Img src={thatsAKnifeGif}
-                 onLoad={() => {
-                   this.setState({isThatsAKnifeGifLoaded: true})
-                 }}
-                 isLoaded={this.state.isThatsAKnifeGifLoaded}
-                 isVisible={this.state.isImageElementVisible}/>
+            <Loader height={260}
+                    width={612}
+                    isMediaLoaded={this.state.isThatsAKnifeGifLoaded}
+            />
+            <Video isVisible={this.state.isImageElementVisible}
+                   isLoaded={this.state.isThatsAKnifeGifLoaded}
+                   onCanPlay={() => {
+                     this.setState({isThatsAKnifeGifLoaded: true})
+                   }}
+                   autoPlay
+                   loop
+                   muted
+                   playsInLine>
+              <source src={thatsAKnifeVideo} type="video/mp4"/>
+              Your browser does not support HTML5 video.
+            </Video>
             <ButtonsContainer visible={!this.state.isTyping}>
               <GreenButton onClick={this.onCorrectButtonClick}>
                 That's a knife!
@@ -100,14 +112,22 @@ export default class CrocodileDundee extends StageComponent {
         return (
           <StageContainer isStageVisible={this.state.isStageVisible}>
             <TypedText/>
-            {this.state.isThatsNotAKnifeGifLoaded ? null :
-              <Loader height={260} width={612}/>}
-            <Img src={thatsNotAKnifeGif}
-                 onLoad={() => {
-                   this.setState({isThatsNotAKnifeGifLoaded: true})
-                 }}
-                 isLoaded={this.state.isThatsNotAKnifeGifLoaded}
-                 isVisible={this.state.isImageElementVisible}/>
+            <Loader height={260}
+                    width={612}
+                    isMediaLoaded={this.state.isThatsNotAKnifeGifLoaded}
+            />
+            <Video isVisible={this.state.isImageElementVisible}
+                   isLoaded={this.state.isThatsNotAKnifeGifLoaded}
+                   onCanPlay={() => {
+                     this.setState({isThatsNotAKnifeGifLoaded: true})
+                   }}
+                   autoPlay
+                   loop
+                   muted
+                   playsInLine>
+              <source src={thatsNotAKnifeVideo} type="video/mp4"/>
+              Your browser does not support HTML5 video.
+            </Video>
             <ButtonsContainer visible={!this.state.isTyping}>
               <OrangeButton onClick={this.returnToDefaultView}>
                 That's not a knife...
