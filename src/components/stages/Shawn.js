@@ -47,6 +47,7 @@ export default class Shawn extends StageComponent {
           <Loader height={600}
                   width={337.5}
                   isMediaLoaded={this.state.isShawnVideoLoaded}
+                  isVisible={this.state.isImageElementVisible}
           />
           <Video isVisible={this.state.isImageElementVisible}
                  isLoaded={this.state.isShawnVideoLoaded}
@@ -71,6 +72,7 @@ export default class Shawn extends StageComponent {
           <Loader height={600}
                   width={436}
                   isMediaLoaded={this.state.isWinterIsComingImageLoaded}
+                  isVisible={this.state.isImageElementVisible}
           />
           <Img src={braceYourself}
                onLoad={() => {

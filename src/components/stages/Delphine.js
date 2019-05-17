@@ -64,6 +64,7 @@ export default class Delphine extends StageComponent {
             <Loader height={540}
                     width={960}
                     isMediaLoaded={this.state.isDelphineKaraokeVideoLoaded}
+                    isVisible={this.state.isImageElementVisible}
             />
             <Video isVisible={this.state.isImageElementVisible}
                    isLoaded={this.state.isDelphineKaraokeVideoLoaded}
@@ -88,6 +89,7 @@ export default class Delphine extends StageComponent {
             <Loader height={252}
                     width={252}
                     isMediaLoaded={this.state.isDelphineGeishaKissLoaded}
+                    isVisible={this.state.isImageElementVisible}
             />
             <Img src={delphineGeishaKiss}
                  onLoad={() => {
@@ -109,6 +111,7 @@ export default class Delphine extends StageComponent {
           <Loader height={252}
                   width={252}
                   isMediaLoaded={this.state.isDelphineScreamLoaded}
+                  isVisible={this.state.isImageElementVisible}
           />
           <Img src={delphineScream}
                onLoad={() => {

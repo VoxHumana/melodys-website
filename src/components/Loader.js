@@ -7,6 +7,7 @@ const StyledContentLoader = styled(ContentLoader)`
   border-radius: 4px;
   box-shadow: inset 0 8px 12px 6px rgba(0,0,0,0.2), inset 0 6px 16px 6px rgba(0,0,0,0.19), 0 8px 12px 6px rgba(0,0,0,0.2), 0 6px 16px 6px rgba(0,0,0,0.19);
   margin: 8px;
+  opacity: ${(props) => props.isVisible ? 1 : 0};
 `;
 
 export default (props) => {
@@ -19,5 +20,6 @@ export default (props) => {
       primaryColor="#ff73bc"
       secondaryColor="#FFABD9"
       style={{width: props.width, height: props.height}}
+      isVisible={props.isVisible}
     />
 }

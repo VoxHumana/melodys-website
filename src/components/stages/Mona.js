@@ -67,6 +67,7 @@ export default class Mona extends StageComponent {
             <Loader height={612}
                     width={550}
                     isMediaLoaded={this.state.isMonaGradImageLoaded}
+                    isVisible={this.state.isImageElementVisible}
             />
             <Img src={monaGradImg}
                  onLoad={() => {
@@ -89,6 +90,7 @@ export default class Mona extends StageComponent {
             <Loader height={292}
                     width={512}
                     isMediaLoaded={this.state.isOnePunchManGifLoaded}
+                    isVisible={this.state.isImageElementVisible}
             />
             <Img src={onePunchManGif}
                  onLoad={() => {
@@ -109,6 +111,7 @@ export default class Mona extends StageComponent {
             <Loader height={446}
                     width={631}
                     isMediaLoaded={this.state.isSimbaImageLoaded}
+                    isVisible={this.state.isImageElementVisible}
             />
             <Img src={simbaImg}
                  onLoad={() => {
@@ -126,9 +129,10 @@ export default class Mona extends StageComponent {
         return (
           <StageContainer isStageVisible={this.state.isStageVisible}>
             <TypedText/>
-            <Loader height={337.5}
-                    width={600}
+            <Loader height={600}
+                    width={337.5}
                     isMediaLoaded={this.state.isMonaDrinkingWineVideoLoaded}
+                    isVisible={this.state.isImageElementVisible}
             />
             <Video isVisible={this.state.isImageElementVisible}
                    isLoaded={this.state.isMonaDrinkingWineVideoLoaded}

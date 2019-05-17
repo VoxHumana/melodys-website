@@ -70,6 +70,7 @@ export default class Jackie extends StageComponent {
         <Loader height={600}
                 width={600}
                 isMediaLoaded={this.state.imagesLoaded}
+                isVisible={this.state.isImageElementVisible}
         />
         <CaptchaGrid images={this.state.isFirstImageComplete ? this.props.secondImage : this.props.firstImage}
                      isVisible={this.state.isImageElementVisible}

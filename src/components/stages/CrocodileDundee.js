@@ -58,6 +58,7 @@ export default class CrocodileDundee extends StageComponent {
                 <Loader height={300}
                         width={300}
                         isMediaLoaded={this.state.isBowieImageLoaded}
+                        isVisible={this.state.isImageElementVisible}
                 />
                 <ClickableThumbnail src={bowieKnifeImg}
                                     onLoad={() => {
@@ -70,6 +71,7 @@ export default class CrocodileDundee extends StageComponent {
                 <Loader height={300}
                         width={400}
                         isMediaLoaded={this.state.isSwitchbladeImageLoaded}
+                        isVisible={this.state.isImageElementVisible}
                 />
                 <ClickableThumbnail src={switchbladeImg}
                                     onLoad={() => {
@@ -88,6 +90,7 @@ export default class CrocodileDundee extends StageComponent {
             <Loader height={260}
                     width={612}
                     isMediaLoaded={this.state.isThatsAKnifeGifLoaded}
+                    isVisible={this.state.isImageElementVisible}
             />
             <Video isVisible={this.state.isImageElementVisible}
                    isLoaded={this.state.isThatsAKnifeGifLoaded}
@@ -115,6 +118,7 @@ export default class CrocodileDundee extends StageComponent {
             <Loader height={260}
                     width={612}
                     isMediaLoaded={this.state.isThatsNotAKnifeGifLoaded}
+                    isVisible={this.state.isImageElementVisible}
             />
             <Video isVisible={this.state.isImageElementVisible}
                    isLoaded={this.state.isThatsNotAKnifeGifLoaded}
