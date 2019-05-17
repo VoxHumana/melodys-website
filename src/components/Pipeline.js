@@ -40,6 +40,7 @@ import cap2_15 from "../img/cap2/015.png";
 import cap2_16 from "../img/cap2/016.png";
 import CrocodileDundee from "./stages/CrocodileDundee";
 import Oliver from "./stages/Oliver";
+import McDonalds from "./stages/McDonalds";
 
 
 export default class Pipeline extends Component {
@@ -54,7 +55,7 @@ export default class Pipeline extends Component {
       backSpeed: 20,
       backDelay: 1300
     };
-    setTimeout(this.loadWelcomeStage, 1000);
+    setTimeout(this.loadMcDonaldStage, 1000);
   }
 
   loadWelcomeStage = () => {
@@ -113,12 +114,18 @@ export default class Pipeline extends Component {
       ];
     const jackieStageComponent = <Jackie
       typedOptions={this.typedOptions}
-      onStageComplete={this.loadShawnStage}
+      onStageComplete={this.loadMcDonaldStage}
       firstImage={captchaImage1}
       secondImage={captchaImage2}
       correctIndices={correctIndices}
     />;
     this.loadStage(jackieStageComponent);
+  };
+
+  loadMcDonaldStage = () => {
+    this.typedOptions.strings = ["", `Question ${this.state.stageIndex}:^500 culinary tastes`, "Which of these is the most refined cuisine?"];
+    const mcdonaldStageComponent = <McDonalds typedOptions={this.typedOptions} onStageComplete={this.loadShawnStage}/>;
+    this.loadStage(mcdonaldStageComponent);
   };
 
   loadShawnStage = () => {
