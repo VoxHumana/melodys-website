@@ -46,14 +46,15 @@ export default class Pipeline extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentStage: <div/>
+      currentStage: <div/>,
+      stageIndex: 1
     };
     this.typedOptions = {
       typeSpeed: 40,
       backSpeed: 20,
       backDelay: 1300
     };
-    setTimeout(this.loadMonaStage, 1000);
+    setTimeout(this.loadWelcomeStage, 1000);
   }
 
   loadWelcomeStage = () => {
@@ -79,18 +80,16 @@ export default class Pipeline extends Component {
   };
 
   loadCrocodileDundeeStage = () => {
-    this.typedOptions.strings = ["", "Question one:^500 object recognition", "Which one of these is a knife?"];
+    this.typedOptions.strings = ["", `Question ${this.state.stageIndex}:^500 object recognition`, "Which one of these is a knife?"];
     const crocodileDundeeStageComponent = <CrocodileDundee
       typedOptions={this.typedOptions}
       onStageComplete={this.loadJackieStage}
     />;
-    this.setState({
-      currentStage: crocodileDundeeStageComponent
-    })
+    this.loadStage(crocodileDundeeStageComponent);
   };
 
   loadJackieStage = () => {
-    this.typedOptions.strings = ["", "Question two:^500 are you a robot?", "Select all squares with Jackie"];
+    this.typedOptions.strings = ["", `Question ${this.state.stageIndex}:^500 are you a robot?`, "Select all squares with Jackie"];
     let captchaImage1 = [cap1_1, cap1_2, cap1_3, cap1_4,
       cap1_5, cap1_6, cap1_7, cap1_8,
       cap1_9, cap1_10, cap1_11, cap1_12,
@@ -119,60 +118,57 @@ export default class Pipeline extends Component {
       secondImage={captchaImage2}
       correctIndices={correctIndices}
     />;
-    this.setState({
-      currentStage: jackieStageComponent
-    });
+    this.loadStage(jackieStageComponent);
   };
 
   loadShawnStage = () => {
-    this.typedOptions.strings = ["", "Question three:^500 voice recognition", "Who is this angelic singer?"];
+    this.typedOptions.strings = ["", `Question ${this.state.stageIndex}:^500 voice recognition`, "Who is this angelic singer?"];
     const shawnStageComponent =
       <Shawn typedOptions={this.typedOptions} onStageComplete={this.loadDelphineStage}/>;
-    this.setState({
-      currentStage: shawnStageComponent
-    });
+    this.loadStage(shawnStageComponent);
   };
 
   loadDelphineStage = () => {
-    this.typedOptions.strings = ["", "Question four:^500 inter-personal relations", "Voulez-vous coucher avec moi ce soir?"];
+    this.typedOptions.strings = ["", `Question ${this.state.stageIndex}:^500 inter-personal relations`, "Voulez-vous coucher avec moi ce soir?"];
     const delphineStageComponent =
       <Delphine typedOptions={this.typedOptions} onStageComplete={this.loadDoYouWipeStage}/>;
-    this.setState({
-      currentStage: delphineStageComponent
-    });
+    this.loadStage(delphineStageComponent);
   };
 
   loadDoYouWipeStage = () => {
-    this.typedOptions.strings = ["", "Question five:^500 personal hygiene", "Do you wipe?"];
+    this.typedOptions.strings = ["", `Question ${this.state.stageIndex}:^500 personal hygiene`, "Do you wipe?"];
     const wipeStageComponent =
       <DoYouWipe
         typedOptions={this.typedOptions}
         onStageComplete={this.loadMonaStage}
       />;
-    this.setState({
-      currentStage: wipeStageComponent
-    });
+    this.loadStage(wipeStageComponent);
   };
 
   loadMonaStage = () => {
-    this.typedOptions.strings = ["", "Question six:^500 lie detection", "Below are two truths and a lie about Mona", "Which is the lie?"];
+    this.typedOptions.strings = ["", `Question ${this.state.stageIndex}:^500 lie detection`, "Below are two truths and a lie about Mona", "Which is the lie?"];
     const monaStageComponent =
       <Mona typedOptions={this.typedOptions} onStageComplete={this.loadOliverStage}/>;
-    this.setState({
-      currentStage: monaStageComponent
-    });
+    this.loadStage(monaStageComponent);
   };
 
   loadOliverStage = () => {
-    this.typedOptions.strings = ["", "Question seven:^500 TBD", "Insert joke about Oliver here"];
+    this.typedOptions.strings = ["", `Question ${this.state.stageIndex}:^500 TBD`, "Insert joke about Oliver here"];
     const oliverStageComponent =
       <Oliver typedOptions={this.typedOptions} onStageComplete={this.loadEndStage}/>;
-    this.setState({
-      currentStage: oliverStageComponent
-    })
+    this.loadStage(oliverStageComponent);
   };
 
   loadEndStage = () => {
+  };
+
+  loadStage = (component) => {
+    this.setState((state) => {
+      return {
+        currentStage: component,
+        stageIndex: state.stageIndex + 1
+      }
+    })
   };
 
   render() {
