@@ -39,7 +39,7 @@ import cap2_14 from "../img/cap2/014.png";
 import cap2_15 from "../img/cap2/015.png";
 import cap2_16 from "../img/cap2/016.png";
 import CrocodileDundee from "./stages/CrocodileDundee";
-import Oliver from "./stages/Oliver";
+import Thanos from "./stages/Thanos";
 import McDonalds from "./stages/McDonalds";
 
 
@@ -55,7 +55,7 @@ export default class Pipeline extends Component {
       backSpeed: 20,
       backDelay: 1300
     };
-    setTimeout(this.loadMcDonaldStage, 1000);
+    setTimeout(this.loadThanosStage, 1000);
   }
 
   loadWelcomeStage = () => {
@@ -155,15 +155,15 @@ export default class Pipeline extends Component {
   loadMonaStage = () => {
     this.typedOptions.strings = ["", `Question ${this.state.stageIndex}:^500 lie detection`, "Below are two truths and a lie about Mona", "Which is the lie?"];
     const monaStageComponent =
-      <Mona typedOptions={this.typedOptions} onStageComplete={this.loadOliverStage}/>;
+      <Mona typedOptions={this.typedOptions} onStageComplete={this.loadThanosStage}/>;
     this.loadStage(monaStageComponent);
   };
 
-  loadOliverStage = () => {
-    this.typedOptions.strings = ["", `Question ${this.state.stageIndex}:^500 TBD`, "Insert joke about Oliver here"];
-    const oliverStageComponent =
-      <Oliver typedOptions={this.typedOptions} onStageComplete={this.loadEndStage}/>;
-    this.loadStage(oliverStageComponent);
+  loadThanosStage = () => {
+    this.typedOptions.strings = ["", `Question ${this.state.stageIndex}:^500 willpower`, "The hardest choices require the strongest wills", "Keep the world perfectly balanced, as all things should be"];
+    const thanosStageComponent =
+      <Thanos typedOptions={this.typedOptions} onStageComplete={this.loadEndStage}/>;
+    this.loadStage(thanosStageComponent);
   };
 
   loadEndStage = () => {
