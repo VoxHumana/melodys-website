@@ -160,7 +160,7 @@ export default class Pipeline extends Component {
   };
 
   loadThanosStage = () => {
-    this.typedOptions.strings = ["", `Question ${this.state.stageIndex}:^500 willpower`, "The hardest choices require the strongest wills", "Keep the world perfectly balanced, as all things should be"];
+    this.typedOptions.strings = ["", `Question ${this.state.stageIndex}:^500 oh, snap!`, "I...", "I don't feel so good, Miss Tung"];
     const thanosStageComponent =
       <Thanos typedOptions={this.typedOptions} onStageComplete={this.loadEndStage}/>;
     this.loadStage(thanosStageComponent);
