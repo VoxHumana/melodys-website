@@ -49,8 +49,8 @@ function generateFrames($canvas, count = 32) {
  */
 function replaceElementVisually($old, $new) {
   const $parent = $old.offsetParent;
-  $new.style.top = `${$old.offsetTop}px`;
-  $new.style.left = `${$old.offsetLeft}px`;
+  $new.style.top = `${$old.offsetTop + 6}px`;
+  $new.style.left = `${$old.offsetLeft + 6}px`;
   $new.style.width = `${$old.offsetWidth}px`;
   $new.style.height = `${$old.offsetHeight}px`;
   $parent.appendChild($new);

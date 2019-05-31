@@ -41,6 +41,7 @@ import cap2_16 from "../img/cap2/016.png";
 import CrocodileDundee from "./stages/CrocodileDundee";
 import Thanos from "./stages/Thanos";
 import McDonalds from "./stages/McDonalds";
+import Timestone from "./stages/Timestone";
 
 
 export default class Pipeline extends Component {
@@ -162,11 +163,18 @@ export default class Pipeline extends Component {
   loadThanosStage = () => {
     this.typedOptions.strings = ["", `Question ${this.state.stageIndex}:^500 oh, snap!`, "I...", "I don't feel so good, Miss Tung"];
     const thanosStageComponent =
-      <Thanos typedOptions={this.typedOptions} onStageComplete={this.loadEndStage}/>;
+      <Thanos typedOptions={this.typedOptions} onStageComplete={this.loadTimestoneStage}/>;
     this.loadStage(thanosStageComponent);
   };
 
-  loadEndStage = () => {
+  loadTimestoneStage = (snapped) => {
+    this.typedOptions.strings = ["", `Question ${this.state.stageIndex}:^500 the endgame`, "Hmmm...^300", "Looks like all your friends are gone...", "If only you could <i>reverse time</i>^250 and bring them back"];
+    const timestoneStageComponent =
+      <Timestone typedOptions={this.typedOptions} onStageComplete={this.loadFinalStage} snapped={snapped}/>;
+    this.loadStage(timestoneStageComponent);
+  };
+
+  loadFinalStage = () => {
   };
 
   loadStage = (component) => {
