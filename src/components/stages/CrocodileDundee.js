@@ -2,7 +2,7 @@ import StageComponent from "./StageComponent";
 import React from "react";
 import StageContainer from "../StageContainer";
 import TypedText from "../TypedText";
-import ButtonsContainer from "../ButtonsContainer";
+import Container from "../Container";
 import GreenButton from "../GreenButton";
 import OrangeButton from "../OrangeButton";
 import bowieKnifeImg from "../../img/bowie_knife.jpg";
@@ -38,7 +38,7 @@ export default class CrocodileDundee extends StageComponent {
         return (
           <StageContainer isStageVisible={this.state.isStageVisible}>
             <TypedText/>
-            <ButtonsContainer visible={!this.state.isTyping}>
+            <Container visible={!this.state.isTyping}>
               <GreenButton onClick={this.onBowieKnifeClick}>
                 <Loader height={300}
                         width={300}
@@ -65,7 +65,7 @@ export default class CrocodileDundee extends StageComponent {
                                     visible={this.state.isSwitchbladeImageLoaded}
                                     alt={'Switchblade knife'}/>
               </OrangeButton>
-            </ButtonsContainer>
+            </Container>
           </StageContainer>
         );
       case "Bowie":
@@ -89,11 +89,11 @@ export default class CrocodileDundee extends StageComponent {
               <source src={thatsAKnifeVideo} type="video/mp4"/>
               Your browser does not support HTML5 video.
             </Video>
-            <ButtonsContainer visible={!this.state.isTyping}>
+            <Container visible={!this.state.isTyping}>
               <GreenButton onClick={this.onCorrectButtonClick}>
                 That's a knife!
               </GreenButton>
-            </ButtonsContainer>
+            </Container>
           </StageContainer>
         );
       case "Switchblade":
@@ -117,11 +117,11 @@ export default class CrocodileDundee extends StageComponent {
               <source src={thatsNotAKnifeVideo} type="video/mp4"/>
               Your browser does not support HTML5 video.
             </Video>
-            <ButtonsContainer visible={!this.state.isTyping}>
+            <Container visible={!this.state.isTyping}>
               <OrangeButton onClick={this.returnToDefaultView}>
                 That's not a knife...
               </OrangeButton>
-            </ButtonsContainer>
+            </Container>
           </StageContainer>
         )
     }

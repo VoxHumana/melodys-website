@@ -2,7 +2,7 @@ import StageComponent from "./StageComponent";
 import TypedText from "../TypedText";
 import StageContainer from "../StageContainer";
 import React from "react";
-import ButtonsContainer from "../ButtonsContainer";
+import Container from "../Container";
 import Img from "../Img";
 import melodyImg from "../../img/thanos/melody.jpg";
 import monaImg from "../../img/thanos/mona.jpg";
@@ -37,12 +37,25 @@ export default class Timestone extends StageComponent {
     this.infinityGauntletReverse = new Audio(infinityGauntletTimestoneSound);
   }
 
+  reverseSnap = () => {
+    this.setState({
+      isMelodySnapped: false,
+      isMonaSnapped: false,
+      isShawnSnapped: false,
+      isDelphineSnapped: false,
+      isOliverSnapped: false,
+      isJackieSnapped: false,
+      isReversed: true
+    });
+    setTimeout(this.onCorrectButtonClick, 2000);
+  };
+
   render() {
     const imageSize = 250;
     return (
       <StageContainer isStageVisible={this.state.isStageVisible}>
         <TypedText/>
-        <ButtonsContainer visible={!this.state.isTyping}>
+        <Container visible={!this.state.isTyping}>
           <Loader height={imageSize}
                   width={imageSize}
                   isMediaLoaded={this.state.isOliverImageLoaded}
@@ -82,7 +95,7 @@ export default class Timestone extends StageComponent {
                isVisible={this.state.isImageElementVisible && !this.state.isShawnSnapped}
                isLoaded={this.state.isShawnImageLoaded}
           />
-        </ButtonsContainer>
+        </Container>
         <Loader height={160}
                 width={160}
                 isMediaLoaded={this.state.isInfinityGauntletLoaded}
@@ -108,21 +121,13 @@ export default class Timestone extends StageComponent {
                      }}
                      onLoopComplete={sprite => {
                        sprite.pause();
-                       this.setState({
-                         isMelodySnapped: false,
-                         isMonaSnapped: false,
-                         isShawnSnapped: false,
-                         isDelphineSnapped: false,
-                         isOliverSnapped: false,
-                         isJackieSnapped: false,
-                         isReversed: true
-                       });
+                       this.reverseSnap();
                      }}
                      onInit={() => {
                        this.setState({isInfinityGauntletLoaded: true})
                      }}
         />
-        <ButtonsContainer visible={!this.state.isTyping}>
+        <Container visible={!this.state.isTyping}>
           <Loader height={imageSize}
                   width={imageSize}
                   isMediaLoaded={this.state.isMonaImageLoaded}
@@ -162,7 +167,7 @@ export default class Timestone extends StageComponent {
                isVisible={this.state.isImageElementVisible && !this.state.isDelphineSnapped}
                isLoaded={this.state.isDelphineImageLoaded}
           />
-        </ButtonsContainer>
+        </Container>
       </StageContainer>
     )
   }

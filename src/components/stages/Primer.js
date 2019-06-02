@@ -1,6 +1,6 @@
 import React from 'react';
 import StageContainer from '../StageContainer';
-import ButtonsContainer from '../ButtonsContainer';
+import ButtonsContainer from '../Container';
 import StageComponent from "./StageComponent";
 import GreenButton from "../GreenButton";
 import TypedText from "../TypedText";

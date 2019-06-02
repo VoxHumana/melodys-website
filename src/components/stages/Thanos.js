@@ -2,7 +2,7 @@ import StageComponent from "./StageComponent";
 import React from "react";
 import TypedText from "../TypedText";
 import StageContainer from "../StageContainer";
-import ButtonsContainer from "../ButtonsContainer";
+import Container from "../Container";
 import Img from "../Img";
 import melodyImg from "../../img/thanos/melody.jpg";
 import monaImg from "../../img/thanos/mona.jpg";
@@ -85,7 +85,7 @@ export default class Thanos extends StageComponent {
     return (
       <StageContainer isStageVisible={this.state.isStageVisible}>
         <TypedText/>
-        <ButtonsContainer visible={!this.state.isTyping}>
+        <Container visible={!this.state.isTyping}>
           <Loader height={imageSize}
                   width={imageSize}
                   isMediaLoaded={this.state.isOliverImageLoaded}
@@ -125,7 +125,7 @@ export default class Thanos extends StageComponent {
                isVisible={this.state.isImageElementVisible}
                isLoaded={this.state.isShawnImageLoaded}
           />
-        </ButtonsContainer>
+        </Container>
         <Loader height={160}
                 width={160}
                 isMediaLoaded={this.state.isInfinityGauntletLoaded}
@@ -164,7 +164,7 @@ export default class Thanos extends StageComponent {
                        this.setState({isInfinityGauntletLoaded: true})
                      }}
         />
-        <ButtonsContainer visible={!this.state.isTyping}>
+        <Container visible={!this.state.isTyping}>
           <Loader height={imageSize}
                   width={imageSize}
                   isMediaLoaded={this.state.isMonaImageLoaded}
@@ -204,7 +204,7 @@ export default class Thanos extends StageComponent {
                isVisible={this.state.isImageElementVisible}
                isLoaded={this.state.isDelphineImageLoaded}
           />
-        </ButtonsContainer>
+        </Container>
       </StageContainer>
     );
   }

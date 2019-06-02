@@ -1,6 +1,6 @@
 import React from 'react';
 import StageContainer from '../StageContainer';
-import ButtonsContainer from "../ButtonsContainer";
+import Container from "../Container";
 import StageComponent from "./StageComponent";
 import GreenButton from "../GreenButton";
 import OrangeButton from "../OrangeButton";
@@ -11,11 +11,11 @@ export default class DoYouWipe extends StageComponent {
     return(
       <StageContainer isStageVisible={this.state.isStageVisible}>
         <TypedText/>
-        <ButtonsContainer
+        <Container
           visible={!this.state.isTyping}>
           <GreenButton onClick={this.onCorrectButtonClick}>What?</GreenButton>
           <OrangeButton onClick={this.onCorrectButtonClick}>Is he white?</OrangeButton>
-        </ButtonsContainer>
+        </Container>
       </StageContainer>
     )
   }

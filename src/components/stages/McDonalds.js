@@ -13,7 +13,7 @@ import escargotImg from "../../img/escargot.jpg";
 import mcdonaldImg from "../../img/mcdonald.jpg";
 import idiotSandwichVideo from "../../img/idiot_sandwich.mp4";
 import holyGrailFrenchmenVideo from "../../img/holy_grail_frenchmen.mp4";
-import ButtonsContainer from "../ButtonsContainer";
+import Container from "../Container";
 import Video from "../Video";
 import Img from "../Img";
 
@@ -48,7 +48,7 @@ export default class McDonalds extends StageComponent {
         return (
           <StageContainer isStageVisible={this.state.isStageVisible}>
             <TypedText/>
-            <ButtonsContainer visible={!this.state.isTyping}>
+            <Container visible={!this.state.isTyping}>
               <GreenButton onClick={this.onBigMacClick}>
                 <Loader height={267}
                         width={267}
@@ -88,7 +88,7 @@ export default class McDonalds extends StageComponent {
                                     visible={this.state.isEscargotImageLoaded}
                                     alt={"Escargots"}/>
               </OrangeButton>
-            </ButtonsContainer>
+            </Container>
           </StageContainer>
         );
       case "BigMac":
@@ -107,11 +107,11 @@ export default class McDonalds extends StageComponent {
                  isVisible={this.state.isImageElementVisible}
                  isLoaded={this.state.isMcdonaldVideoLoaded}
             />
-            <ButtonsContainer visible={!this.state.isTyping}>
+            <Container visible={!this.state.isTyping}>
               <GreenButton onClick={this.onCorrectButtonClick}>
                 I'm lovin' it!
               </GreenButton>
-            </ButtonsContainer>
+            </Container>
           </StageContainer>
         );
       case "BeefWellington":
@@ -135,11 +135,11 @@ export default class McDonalds extends StageComponent {
               <source src={idiotSandwichVideo} type="video/mp4"/>
               Your browser does not support HTML5 video.
             </Video>
-            <ButtonsContainer visible={!this.state.isTyping}>
+            <Container visible={!this.state.isTyping}>
               <BlueButton onClick={this.returnToDefaultView}>
                 You're an idiot sandwich!
               </BlueButton>
-            </ButtonsContainer>
+            </Container>
           </StageContainer>
         );
       case "Escargot":
@@ -163,11 +163,11 @@ export default class McDonalds extends StageComponent {
               <source src={holyGrailFrenchmenVideo} type="video/mp4"/>
               Your browser does not support HTML5 video.
             </Video>
-            <ButtonsContainer visible={!this.state.isTyping}>
+            <Container visible={!this.state.isTyping}>
               <OrangeButton onClick={this.returnToDefaultView}>
                 I fart in your general direction!
               </OrangeButton>
-            </ButtonsContainer>
+            </Container>
           </StageContainer>
         );
     }

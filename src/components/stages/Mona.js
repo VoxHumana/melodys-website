@@ -3,7 +3,7 @@ import React from "react";
 import StageContainer from "../StageContainer";
 import TypedText from "../TypedText";
 import Img from "../Img";
-import ButtonsContainer from "../ButtonsContainer";
+import Container from "../Container";
 import GreenButton from "../GreenButton";
 import OrangeButton from "../OrangeButton";
 import BlueButton from "../BlueButton";
@@ -76,11 +76,11 @@ export default class Mona extends StageComponent {
                  isVisible={this.state.isImageElementVisible}
                  isLoaded={this.state.isMonaGradImageLoaded}
             />
-            <ButtonsContainer visible={!this.state.isTyping}>
+            <Container visible={!this.state.isTyping}>
               <GreenButton onClick={this.onBlackBeltButtonClick}>She has a black belt in Taekwondo</GreenButton>
               <OrangeButton onClick={this.onSimbaButtonClick}>She has a cat called Simba</OrangeButton>
               <BlueButton onClick={this.onWineButtonClick}>She loves wine</BlueButton>
-            </ButtonsContainer>
+            </Container>
           </StageContainer>
         );
       case "BlackBelt":
@@ -99,9 +99,9 @@ export default class Mona extends StageComponent {
                  isVisible={this.state.isImageElementVisible}
                  isLoaded={this.state.isOnePunchManGifLoaded}
             />
-            <ButtonsContainer visible={!this.state.isTyping}>
+            <Container visible={!this.state.isTyping}>
               <GreenButton onClick={this.returnToDefaultView}>It's true! Waan punnnch!</GreenButton>
-            </ButtonsContainer>
+            </Container>
           </StageContainer>
         );
       case "Simba":
@@ -120,9 +120,9 @@ export default class Mona extends StageComponent {
                  isVisible={this.state.isImageElementVisible}
                  isLoaded={this.state.isSimbaImageLoaded}
             />
-            <ButtonsContainer visible={!this.state.isTyping}>
+            <Container visible={!this.state.isTyping}>
               <OrangeButton onClick={this.returnToDefaultView}>She does! Meow!</OrangeButton>
-            </ButtonsContainer>
+            </Container>
           </StageContainer>
         );
       case "Wine":
@@ -143,9 +143,9 @@ export default class Mona extends StageComponent {
               <source src={monaDrinkingWine} type="video/mp4"/>
               Your browser does not support HTML5 video.
             </Video>
-            <ButtonsContainer visible={!this.state.isTyping}>
+            <Container visible={!this.state.isTyping}>
               <BlueButton onClick={this.onCorrectButtonClick}>Rotten grape juice, ick!</BlueButton>
-            </ButtonsContainer>
+            </Container>
           </StageContainer>
         );
     }

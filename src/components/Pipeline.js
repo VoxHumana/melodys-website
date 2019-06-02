@@ -42,6 +42,8 @@ import CrocodileDundee from "./stages/CrocodileDundee";
 import Thanos from "./stages/Thanos";
 import McDonalds from "./stages/McDonalds";
 import Timestone from "./stages/Timestone";
+import Birthday from "./stages/Birthday";
+import End from "./stages/End";
 
 
 export default class Pipeline extends Component {
@@ -56,7 +58,7 @@ export default class Pipeline extends Component {
       backSpeed: 20,
       backDelay: 1300
     };
-    setTimeout(this.loadThanosStage, 1000);
+    setTimeout(this.loadWelcomeStage, 1000);
   }
 
   loadWelcomeStage = () => {
@@ -168,13 +170,22 @@ export default class Pipeline extends Component {
   };
 
   loadTimestoneStage = (snapped) => {
-    this.typedOptions.strings = ["", `Question ${this.state.stageIndex}:^500 the endgame`, "Hmmm...^300", "Looks like all your friends are gone...", "If only you could <i>reverse time</i>^250 and bring them back"];
+    this.typedOptions.strings = ["", `Question ${this.state.stageIndex}:^500 the endgame`, "Your friends are now perfectly balanced^300, as all things should be", "But is this inevitable?", "Or is there still <i>time</i>^150 to bring them back?"];
     const timestoneStageComponent =
-      <Timestone typedOptions={this.typedOptions} onStageComplete={this.loadFinalStage} snapped={snapped}/>;
+      <Timestone typedOptions={this.typedOptions} onStageComplete={this.loadBirthdayStage} snapped={snapped}/>;
     this.loadStage(timestoneStageComponent);
   };
 
+  loadBirthdayStage = () => {
+    this.typedOptions.strings = ["", "All questions completed", "Processing results^300.^300.^300.", "Identity verified:^250 Hello Melody", "I hope you've enjoyed this little trip down memory lane", "From where it all started...", "To chasing dreams in a land down under...", "We'll always love you 3000, Melody!"];
+    const birthdayStageComponent = <Birthday typedOptions={this.typedOptions} onStageComplete={this.loadFinalStage}/>;
+    this.loadStage(birthdayStageComponent);
+  };
+
   loadFinalStage = () => {
+    this.typedOptions.strings = ["", "Happy birthday!", "FIN"];
+    const endStageComponent = <End typedOptions={this.typedOptions}/>;
+    this.loadStage(endStageComponent);
   };
 
   loadStage = (component) => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import StageContainer from '../StageContainer';
-import ButtonsContainer from '../ButtonsContainer';
+import Container from '../Container';
 import StageComponent from "./StageComponent";
 import TypedText from "../TypedText";
 import GreenButton from "../GreenButton";
@@ -11,11 +11,11 @@ export default class Welcome extends StageComponent {
     return (
       <StageContainer isStageVisible={this.state.isStageVisible}>
         <TypedText/>
-        <ButtonsContainer
+        <Container
           visible={!this.state.isTyping}>
           <GreenButton onClick={this.onCorrectButtonClick}>YES</GreenButton>
           <OrangeButton onClick={this.onCorrectButtonClick}>OF COURSE</OrangeButton>
-        </ButtonsContainer>
+        </Container>
       </StageContainer>
     );
   }

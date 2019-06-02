@@ -1,5 +1,5 @@
 import React from 'react';
-import ButtonsContainer from '../ButtonsContainer';
+import Container from '../Container';
 import StageContainer from "../StageContainer";
 import StageComponent from "./StageComponent";
 import Video from "../Video";
@@ -75,12 +75,12 @@ export default class Delphine extends StageComponent {
               <source src={delphineKaraoke} type="video/mp4"/>
               Your browser does not support HTML5 video.
             </Video>
-            <ButtonsContainer
+            <Container
               visible={!this.state.isTyping}>
               <GreenButton onClick={this.onFromageButtonClick}>Omelette du
                 fromage!</GreenButton>
               <OrangeButton onClick={this.onNonButtonClick}>Non!</OrangeButton>
-            </ButtonsContainer>
+            </Container>
           </StageContainer>);
       else
         return (
@@ -98,10 +98,10 @@ export default class Delphine extends StageComponent {
                  isVisible={this.state.isImageElementVisible}
                  isLoaded={this.state.isDelphineGeishaKissLoaded}
             />
-            <ButtonsContainer
+            <Container
               visible={true}>
               <GreenButton onClick={this.onCorrectButtonClick}>Tabernac!</GreenButton>
-            </ButtonsContainer>
+            </Container>
           </StageContainer>
         );
     } else {
@@ -120,10 +120,10 @@ export default class Delphine extends StageComponent {
                isVisible={this.state.isImageElementVisible}
                isLoaded={this.state.isDelphineScreamLoaded}
           />
-          <ButtonsContainer
+          <Container
             visible={true}>
             <OrangeButton onClick={this.onSacreBleuButtonClick}>Sacré bleu!</OrangeButton>
-          </ButtonsContainer>
+          </Container>
         </StageContainer>
       )
     }
