@@ -1,5 +1,5 @@
 import React from 'react';
-import ButtonsContainer from '../ButtonsContainer';
+import Container from '../Container';
 import StageContainer from "../StageContainer";
 import Video from "../Video";
 import StageComponent from "./StageComponent";
@@ -9,19 +9,36 @@ import TypedText from "../TypedText";
 import Img from "../Img";
 import shawnLetItGo from '../../img/shawn_let_it_go.mp4';
 import braceYourself from '../../img/brace_yourself.jpg';
+import shawnGoodAtEverything from "../../img/shawn_good_at_everything.mp4";
 import Loader from "../Loader";
 
 export default class Shawn extends StageComponent {
   constructor(props) {
     super(props);
-    this.state.isShawnVideoLoaded = false;
-    this.state.isWinterIsComingImageLoaded = false;
+    Object.assign(this.state, {
+      isShawnLetItGoVideoLoaded: false,
+      isShawnGoodAtEverythingVideoLoaded: true,
+      isWinterIsComingImageLoaded: false,
+      viewToDisplay: "default"
+    });
   }
   onSeanButtonClick = () => {
     this.hide();
     setTimeout(() => {
       this.setState({
-        winterIsComing: true,
+        viewToDisplay: "winterIsComing",
+        isStageVisible: true,
+        isImageElementVisible: true,
+        isShawnLetItGoVideoLoaded: false
+      })
+    }, 1000);
+  };
+
+  onShawnButtonClick = () => {
+    this.hide();
+    setTimeout(() => {
+      this.setState({
+        viewToDisplay: "goodAtEverything",
         isStageVisible: true,
         isImageElementVisible: true
       })
@@ -32,7 +49,7 @@ export default class Shawn extends StageComponent {
     this.hide();
     setTimeout(() => {
       this.setState({
-        winterIsComing: false,
+        viewToDisplay: "default",
         isStageVisible: true,
         isImageElementVisible: true
       })
@@ -40,32 +57,7 @@ export default class Shawn extends StageComponent {
   };
 
   render() {
-    if (this.state.winterIsComing == null || this.state.winterIsComing === false) {
-      return (
-        <StageContainer isStageVisible={this.state.isStageVisible}>
-          <TypedText/>
-          <Loader height={600}
-                  width={337.5}
-                  isMediaLoaded={this.state.isShawnVideoLoaded}
-                  isVisible={this.state.isImageElementVisible}
-          />
-          <Video isVisible={this.state.isImageElementVisible}
-                 isLoaded={this.state.isShawnVideoLoaded}
-                 onCanPlay={() => {
-                   this.setState({isShawnVideoLoaded: true})
-                 }}
-                 controls>
-            <source src={shawnLetItGo} type="video/mp4"/>
-            Your browser does not support HTML5 video.
-          </Video>
-          <ButtonsContainer
-            visible={!this.state.isTyping}>
-            <GreenButton onClick={this.onCorrectButtonClick}>Shawn He</GreenButton>
-            <OrangeButton onClick={this.onSeanButtonClick}>Sean Bean</OrangeButton>
-          </ButtonsContainer>
-        </StageContainer>
-      );
-    } else {
+    if (this.state.viewToDisplay === "winterIsComing") {
       return (
         <StageContainer isStageVisible={this.state.isStageVisible}>
           <TypedText/>
@@ -80,10 +72,54 @@ export default class Shawn extends StageComponent {
                }}
                isVisible={this.state.isImageElementVisible}
                isLoaded={this.state.isWinterIsComingImageLoaded}/>
-          <ButtonsContainer
+          <Container
             visible={true}>
             <GreenButton onClick={this.winterIsComing}>Winter is coming</GreenButton>
-          </ButtonsContainer>
+          </Container>
+        </StageContainer>
+      );
+    } else if (this.state.viewToDisplay === "goodAtEverything") {
+      return (
+        <StageContainer isStageVisible={this.state.isStageVisible}>
+          <TypedText/>
+          <Video isVisible={this.state.isImageElementVisible}
+                 isLoaded={this.state.isShawnGoodAtEverythingVideoLoaded}
+                 onCanPlay={() => {
+                   this.setState({isShawnGoodAtEverythingVideoLoaded: true})
+                 }}
+                 controls>
+            <source src={shawnGoodAtEverything} type="video/mp4"/>
+            Your browser does not support HTML5 video.
+          </Video>
+          <Container
+            visible={true}>
+            <GreenButton onClick={this.onCorrectButtonClick}>A humble and rising star</GreenButton>
+          </Container>
+        </StageContainer>
+      )
+    } else {
+      return (
+        <StageContainer isStageVisible={this.state.isStageVisible}>
+          <TypedText/>
+          <Loader height={600}
+                  width={337.5}
+                  isMediaLoaded={this.state.isShawnLetItGoVideoLoaded}
+                  isVisible={this.state.isImageElementVisible}
+          />
+          <Video isVisible={this.state.isImageElementVisible}
+                 isLoaded={this.state.isShawnLetItGoVideoLoaded}
+                 onCanPlay={() => {
+                   this.setState({isShawnLetItGoVideoLoaded: true})
+                 }}
+                 controls>
+            <source src={shawnLetItGo} type="video/mp4"/>
+            Your browser does not support HTML5 video.
+          </Video>
+          <Container
+            visible={!this.state.isTyping}>
+            <GreenButton onClick={this.onShawnButtonClick}>Shawn He</GreenButton>
+            <OrangeButton onClick={this.onSeanButtonClick}>Sean Bean</OrangeButton>
+          </Container>
         </StageContainer>
       );
     }
