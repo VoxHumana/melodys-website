@@ -126,7 +126,7 @@ export default class Pipeline extends Component {
   };
 
   loadMcDonaldStage = () => {
-    this.typedOptions.strings = ["", `Question ${this.state.stageIndex}:^500 culinary tastes`, "Which of these is the most refined cuisine?"];
+    this.typedOptions.strings = ["", `Question ${this.state.stageIndex}:^500 culinary tastes`, "According to Jackie, which of these is the most refined cuisine?"];
     const mcdonaldStageComponent = <McDonalds typedOptions={this.typedOptions} onStageComplete={this.loadShawnStage}/>;
     this.loadStage(mcdonaldStageComponent);
   };

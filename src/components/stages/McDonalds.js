@@ -10,7 +10,7 @@ import ClickableThumbnail from "../ClickableThumbnail";
 import bigMacImg from "../../img/big_mac.png";
 import beefWellingtonImg from "../../img/beef_wellington.jpg";
 import escargotImg from "../../img/escargot.jpg";
-import mcdonaldImg from "../../img/mcdonald.jpg";
+import mcdonaldImg from "../../img/jackie_mcdonalds.jpg";
 import idiotSandwichVideo from "../../img/idiot_sandwich.mp4";
 import holyGrailFrenchmenVideo from "../../img/holy_grail_frenchmen.mp4";
 import Container from "../Container";
@@ -95,8 +95,8 @@ export default class McDonalds extends StageComponent {
         return (
           <StageContainer isStageVisible={this.state.isStageVisible}>
             <TypedText/>
-            <Loader height={414}
-                    width={620}
+            <Loader height={600}
+                    width={366}
                     isMediaLoaded={this.state.isMcdonaldVideoLoaded}
                     isVisible={this.state.isImageElementVisible}
             />
@@ -109,7 +109,7 @@ export default class McDonalds extends StageComponent {
             />
             <Container visible={!this.state.isTyping}>
               <GreenButton onClick={this.onCorrectButtonClick}>
-                I'm lovin' it!
+                He's lovin' it!
               </GreenButton>
             </Container>
           </StageContainer>
@@ -137,7 +137,7 @@ export default class McDonalds extends StageComponent {
             </Video>
             <Container visible={!this.state.isTyping}>
               <BlueButton onClick={this.returnToDefaultView}>
-                You're an idiot sandwich!
+                An idiot sandwich!
               </BlueButton>
             </Container>
           </StageContainer>

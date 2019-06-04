@@ -64,8 +64,8 @@ export default class Mona extends StageComponent {
         return (
           <StageContainer isStageVisible={this.state.isStageVisible}>
             <TypedText/>
-            <Loader height={612}
-                    width={550}
+            <Loader height={600}
+                    width={538}
                     isMediaLoaded={this.state.isMonaGradImageLoaded}
                     isVisible={this.state.isImageElementVisible}
             />
